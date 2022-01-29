@@ -1,0 +1,38 @@
+html, body {
+  color: #333;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: rgb(65, 62, 252);
+  text-decoration: none;
+}
+
+.link {
+  color: rgb(65, 62, 252);
+  cursor: pointer;
+}
+
+.rounded {
+  border-radius: 4px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
