@@ -1,0 +1,76 @@
+<template>
+  <div :class="$style.wrapper">
+    <div class="flex flex-column">
+      <div class="h5 font-bold mb-2">
+        Монстры:
+      </div>
+
+      <div
+        v-for="item in enemiesListArray"
+        :key="item.id"
+        class="flex w-100 h-16 mb-4 "
+      >
+        <img
+          :src="item.info.img"
+          class="cursor-pointer mr-4 w-12"
+          :alt="item.info.name"
+          @click="openItemInfo(item.prototype)"
+        >
+
+        <div class="flex flex-grow flex-column">
+          <div class="h5 font-bold">
+            {{ item.info.name }} [{{ item.info.lvl }}]
+
+            <i
+              v-if="item.isAgressive"
+              :class="['bi bi-asterisk text-red', $style.asterisk]"
+            />
+          </div>
+
+          <div class="h6">
+            HP: {{ item.info.default_hp }}
+          </div>
+
+          <div class="h6">
+            Урон: {{ item.damage.min }} - {{ item.damage.max }}
+          </div>
+        </div>
+
+        <div class="flex align-center justify-center mr-1">
+          <UIButton
+            icon-only
+            variant="text"
+          >
+            <i class="bi bi-hand-index" />
+          </UIButton>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { getEnemiesListByCoordinate } from '~/backendInfo/npc'
+const router = useRouter();
+
+const stateUserInfo = storeStateUserInfo().value.position
+
+const enemiesListObj = computed(() => getEnemiesListByCoordinate(stateUserInfo))
+const enemiesListArray = computed(() => {
+  return Object.keys(enemiesListObj.value).map((id) => enemiesListObj.value[id])
+})
+
+const openItemInfo = (itemProto: number): void => {
+  router.push(`/info/npc/${itemProto}`)
+}
+</script>
+
+<style lang="scss" module>
+.wrapper {
+  border: 1px solid #eee;
+}
+
+.asterisk {
+  font-size: 8px;
+}
+</style>

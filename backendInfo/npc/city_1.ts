@@ -1,9 +1,12 @@
-export default {
-  wolf_1: {
+import { BackEnemy } from '~/typings/enemies'
+
+const items: Record<number, BackEnemy> = {
+  1000: {
     info: {
       name: "Молодой волк",
-      img: '/images/items/armor/1/28.gif',
+      img: '/images/enemies/408.jpg',
       lvl: 5,
+      default_hp: 14,
     },
 
     damage: {
@@ -29,3 +32,5 @@ export default {
     possible_drop: [5000, 5001],
   },
 }
+
+export default items

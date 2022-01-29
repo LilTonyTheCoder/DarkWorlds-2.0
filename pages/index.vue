@@ -4,6 +4,8 @@
       <PagesIndexMap :map-array="mapArray" />
 
       <PagesIndexMapControllers />
+
+      <PagesIndexMapEnemies />
     </div>
   </div>
 </template>

@@ -107,6 +107,7 @@ const areaIconMatch = {
   battle: 'battle',
   clothes: 'clothes',
   ring: 'ring',
+
   get(prop) {
     return this[prop] ? this[prop] : 'in-progress'
   },

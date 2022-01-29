@@ -79,7 +79,7 @@ onBeforeUnmount(() => {
 
 <style lang="scss" module>
 .wrapper {
-  bottom: 50px;
+  top: 180px;
   right: 30px;
   width: calc(70px + 24px);
 }
