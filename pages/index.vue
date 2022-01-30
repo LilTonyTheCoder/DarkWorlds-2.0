@@ -10,10 +10,14 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { mapArray } from '~/backendInfo/map'
+import { changeHeaderTitle } from '~/composables/headerCompo'
+
+const storeStateHeaderLocal = storeStateHeader()
 
 useMeta({
-  title: 'DarkWorlds'
+  title: storeStateHeaderLocal.value.gameName
 })
+changeHeaderTitle(storeStateHeaderLocal.value.gameName)
 </script>

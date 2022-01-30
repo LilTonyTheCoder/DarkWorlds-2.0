@@ -4,6 +4,7 @@ import { FINANCE_CURRENSIES } from '~/constants/userStore'
 export type HeaderStore = {
   title: string
   gameVersion: number
+  gameName: string
 }
 
 export type UserStore = {

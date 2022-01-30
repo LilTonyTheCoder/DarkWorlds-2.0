@@ -10,12 +10,8 @@
         <i v-else class="bi bi-arrow-left"></i>
       </UIButton>
 
-      <span v-if="isMainPageRoute">
+      <span>
         {{ headerState.title }}
-      </span>
-
-      <span v-else>
-        {{ userState.common.name }} [ {{ userState.common.lvl }} ]
       </span>
     </div>
 
@@ -35,7 +31,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
 import { storeActionToggleLeftMenu } from '~/composables/store'
 
 const bottomLinksArray: {
@@ -57,7 +52,6 @@ const bottomLinksArray: {
 ]
 const route = useRoute()
 const router = useRouter()
-const userState = storeStateUserInfo()
 const headerState = storeStateHeader()
 const isMainPageRoute = computed(() => route.fullPath === '/')
 

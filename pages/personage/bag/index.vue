@@ -37,10 +37,12 @@ import { getItemById, prototypes } from '~/backendInfo/items'
 import { ref, computed } from 'vue'
 import { ClientEquipmentItem } from '~/typings/equipments-items'
 import { FINANCE_CURRENSIES, FINANCE_NAMES } from '~/constants/userStore'
+import { resetHeaderTitle } from '~/composables/headerCompo'
 
 useMeta({
   title: 'DW bag'
 })
+resetHeaderTitle()
 
 const itemProt = ref(prototypes);
 

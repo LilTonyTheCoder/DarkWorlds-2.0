@@ -40,12 +40,14 @@
 </template>
 
 <script lang="ts" setup>
+import { resetHeaderTitle } from '~/composables/headerCompo'
 import { computed } from 'vue'
 import { leftSideItems, rightSideItems, stones, runesTop, runesBottom } from '~/helpers/personageWearingInfo'
 
 useMeta({
   title: 'DW personage'
 })
+resetHeaderTitle()
 
 const userState = storeStateUserInfo();
 const userCommon = computed(() => userState.value.common)

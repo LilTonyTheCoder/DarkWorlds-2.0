@@ -34,3 +34,11 @@ export const getEnemiesListByCoordinate = (coordinate: { x: number, y: number })
 
   return allEnemiesObj
 }
+
+export const getEnemyByPrototype = (proto: string | string[]): BackEnemy => {
+  if (typeof proto === 'string') {
+    return prototypes[proto]
+  }
+
+  return prototypes[proto[0]]
+}
