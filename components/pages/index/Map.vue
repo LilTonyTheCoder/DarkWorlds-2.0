@@ -84,9 +84,10 @@
 import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
 
+let blockSize = 30
 const blockParams = {
-  width: 30, // (*1)
-  height: 30, // (*1)
+  width: blockSize,
+  height: blockSize,
 }
 
 const areaIconMatch = {
