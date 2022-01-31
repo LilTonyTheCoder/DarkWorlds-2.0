@@ -1,35 +1,30 @@
 import { BackEnemy } from '~/typings/enemies'
+import { BASE_INFO, STATS, MODIFICATORS } from '~/constants/creaturesParams'
 
 const items: Record<number, BackEnemy> = {
   1000: {
     info: {
-      name: "Молодой волк",
+      [BASE_INFO.NAME]: "Молодой волк",
       img: '/images/enemies/408.jpg',
-      lvl: 5,
-      default_hp: 14,
+      [BASE_INFO.LVL]: 5,
+      [MODIFICATORS.HP]: 14,
+      isAgressive: false,
     },
 
-    damage: {
-      min: 11,
-      max: 14,
+    modificators: {
+      [MODIFICATORS.MIN_DAMAGE]: 10,
+      [MODIFICATORS.MAX_DAMAGE]: 20,
     },
 
     experience: 18,
-    defence: 31,
-    magical_defence: 11,
-    accuracy: 178,
-    dodge: 109,
-    isAgressive: false,
 
     stats: {
-      str: 5,
-      dex: 3,
-      suc: 8,
-      end: 3,
-      int: 0,
+      [STATS.STR]: 5,
+      [STATS.DEX]: 3,
+      [STATS.SUC]: 8,
+      [STATS.END]: 3,
+      [STATS.INT]: 0,
     },
-
-    possible_drop: [5000, 5001],
   },
 }
 

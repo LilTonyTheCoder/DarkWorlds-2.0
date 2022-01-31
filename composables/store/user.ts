@@ -2,19 +2,21 @@ import { useState } from '#app'
 import { UserStore } from '~/typings/store'
 import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
-import { EquipedTypes, StatsTypes } from '~/typings/store'
+import { EquipedTypes } from '~/typings/store'
+import { BASE_INFO, STATS, POSITIONS, GENDERS } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_MULTI } from '~/constants/clothesInfo'
 
 export const storeStateUserInfo = (): {
   value: UserStore
 } => useState<UserStore>('userInfo', () => (
   {
     common: {
-      name: 'Антоп',
-      lvl: 17,
-      class: 'Воин',
-      avatar: '/images/avatars/male/common/0_0_M014.jpg',
-      exp: 27270,
-      needExp: 31300,
+      [BASE_INFO.NAME]: 'Антоп',
+      [BASE_INFO.LVL]: 17,
+      [BASE_INFO.CLASS]: 'Воин',
+      [BASE_INFO.AVATAR]: '/images/avatars/male/common/0_0_M014.jpg',
+      [BASE_INFO.EXP]: 27270,
+      [BASE_INFO.EXP_FOR_NEXT_LEVEL]: 31300,
     },
 
     finance: {
@@ -43,54 +45,55 @@ export const storeStateUserInfo = (): {
     ],
 
     equipped: {
-      helmet: '9d25fcc91',
-      weapon: 'cd8c2814a',
-      armor: null,
+      [CLOTHES.HELMET]: '9d25fcc91',
+      [CLOTHES.WEAPON]: 'cd8c2814a',
+      [CLOTHES.ARMOR]: null,
 
-      earrings: null,
-      necklace: null,
-      gloves: null,
-      bracelets: null,
-      r1: null,
-      r2: null,
-      r3: null,
-      r4: null,
-      shield: null,
-      boots: null,
-      belt: null,
+      [CLOTHES.EARRINGS]: null,
+      [CLOTHES.NECKLACE]: null,
+      [CLOTHES.GLOVES]: null,
+      [CLOTHES.BRACELETS]: null,
+      [CLOTHES.SHIELD]: null,
+      [CLOTHES.BOOTS]: null,
+      [CLOTHES.BELT]: null,
 
-      stone1: null,
-      stone2: null,
-      stone3: null,
-      stone4: null,
-      stone5: null,
-      stone6: null,
-      stone7: null,
+      [CLOTHES_MULTI.R_1]: null,
+      [CLOTHES_MULTI.R_2]: null,
+      [CLOTHES_MULTI.R_3]: null,
+      [CLOTHES_MULTI.R_4]: null,
 
-      rune1: null,
-      rune2: null,
-      rune3: null,
-      rune4: null,
-      rune5: null,
-      rune6: null,
+      [CLOTHES_MULTI.STONE_1]: null,
+      [CLOTHES_MULTI.STONE_2]: null,
+      [CLOTHES_MULTI.STONE_3]: null,
+      [CLOTHES_MULTI.STONE_4]: null,
+      [CLOTHES_MULTI.STONE_5]: null,
+      [CLOTHES_MULTI.STONE_6]: null,
+      [CLOTHES_MULTI.STONE_7]: null,
+
+      [CLOTHES_MULTI.RUNE_1]: null,
+      [CLOTHES_MULTI.RUNE_2]: null,
+      [CLOTHES_MULTI.RUNE_3]: null,
+      [CLOTHES_MULTI.RUNE_4]: null,
+      [CLOTHES_MULTI.RUNE_5]: null,
+      [CLOTHES_MULTI.RUNE_6]: null,
     },
 
     stats: {
-      str: 1,
-      dex: 1,
-      suc: 2,
-      end: 7,
-      int: 0,
-      free: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 2,
+      [STATS.END]: 7,
+      [STATS.INT]: 0,
+      [STATS.FREE]: 2,
     },
 
     position: {
-      x: 5,
-      y: 5,
+      [POSITIONS.X]: 5,
+      [POSITIONS.Y]: 5,
     },
 
     settings: {
-      gender: 'male',
+      gender: GENDERS.MALE,
       availableAvatars: [
         '/common/0_0_M000.jpg',
         '/common/0_0_M001.jpg',
@@ -116,16 +119,16 @@ export const storeStateUserInfo = (): {
 export const storeActionMapMove = (payload: '↑' | '←' | '→' | '↓'): void => {
   switch (payload) {
     case '↑':
-      storeStateUserInfo().value.position.y -= 1
+      storeStateUserInfo().value.position[POSITIONS.Y] -= 1
       break
     case '←':
-      storeStateUserInfo().value.position.x -= 1
+      storeStateUserInfo().value.position[POSITIONS.X] -= 1
       break
     case '→':
-      storeStateUserInfo().value.position.x += 1
+      storeStateUserInfo().value.position[POSITIONS.X] += 1
       break
     case '↓':
-      storeStateUserInfo().value.position.y += 1
+      storeStateUserInfo().value.position[POSITIONS.Y] += 1
       break
   }
 }
@@ -143,9 +146,9 @@ export const storeActionThrowItemFromInventory = (payload: string) => {
 export const storeActionPutOnAvatar = (payload: string) => {
   storeStateUserInfo().value.common.avatar = payload
 }
-export const storeActionIncreaseStat = (payload: StatsTypes) => {
-  if (storeStateUserInfo().value.stats.free < 1) return
+export const storeActionIncreaseStat = (payload: STATS) => {
+  if (storeStateUserInfo().value.stats[STATS.FREE] < 1) return
 
   storeStateUserInfo().value.stats[payload] += 1
-  storeStateUserInfo().value.stats.free -= 1
+  storeStateUserInfo().value.stats[STATS.FREE] -= 1
 }

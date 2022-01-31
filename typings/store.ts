@@ -1,5 +1,7 @@
 import { BackEquipmentTypes } from '~/typings/equipments-items'
 import { FINANCE_CURRENSIES } from '~/constants/userStore'
+import { BASE_INFO, STATS, POSITIONS, GENDERS } from '~/constants/creaturesParams'
+import { CLOTHES_MULTI } from '~/constants/clothesInfo'
 
 export type HeaderStore = {
   title: string
@@ -9,12 +11,12 @@ export type HeaderStore = {
 
 export type UserStore = {
   common: {
-    name: string
-    lvl: number
-    class: 'Воин'
-    avatar: string
-    exp: number
-    needExp: number
+    [BASE_INFO.NAME]: string
+    [BASE_INFO.LVL]: number
+    [BASE_INFO.CLASS]: 'Воин'
+    [BASE_INFO.AVATAR]: string
+    [BASE_INFO.EXP]: number
+    [BASE_INFO.EXP_FOR_NEXT_LEVEL]: number
   }
 
   finance: Record<FINANCE_CURRENSIES, number>
@@ -23,45 +25,14 @@ export type UserStore = {
 
   equipped: Partial<Record<EquipedTypes, string | null>>
 
-  stats: Record<StatsTypes, number>
+  stats: Record<STATS, number>
 
-  position: {
-    x: number
-    y: number
-  }
+  position: Record<POSITIONS, number>
 
   settings: {
-    gender: 'male' | 'female'
+    gender: GENDERS
     availableAvatars: string[]
   },
 }
 
-export type StatsTypes =
-  'str' |
-  'dex' |
-  'suc' |
-  'end' |
-  'int' |
-  'free'
-
-export type EquipedTypes =
-  BackEquipmentTypes |
-  'r1' |
-  'r2' |
-  'r3' |
-  'r4' |
-
-  'stone1' |
-  'stone2' |
-  'stone3' |
-  'stone4' |
-  'stone5' |
-  'stone6' |
-  'stone7' |
-
-  'rune1' |
-  'rune2' |
-  'rune3' |
-  'rune4' |
-  'rune5' |
-  'rune6'
+export type EquipedTypes = BackEquipmentTypes | CLOTHES_MULTI

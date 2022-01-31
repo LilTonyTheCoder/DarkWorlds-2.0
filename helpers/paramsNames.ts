@@ -1,77 +1,79 @@
 import {
   BackEquipmentProps,
   BackEquipmentRequires,
-  BackEquipmentTypes,
-  BackEquipmentActionsName
+  BackEquipmentTypes
 } from '~/typings/equipments-items'
 
-export type KeyNameKeys = BackEquipmentProps | BackEquipmentRequires | 'use_chance'
+import { STATS, MODIFICATORS, BASE_INFO } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS, RUNES_ACTIONS } from '~/constants/clothesInfo'
+
+export type KeyNameKeys = BackEquipmentProps | BackEquipmentRequires | CLOTHES_STATS.USE_CHANCE
 
 export const keyNameMatch:
   Record<KeyNameKeys, string> = {
   // Stats
-  lvl: 'Уровень',
-  str: 'Сила',
-  dex: 'Ловкость',
-  suc: 'Инстинкт',
-  end: 'Жизнеспособность',
-  int: 'Интеллект',
-  free: 'Свободных статов',
+  [BASE_INFO.LVL]: 'Уровень',
+  [STATS.STR]: 'Сила',
+  [STATS.DEX]: 'Ловкость',
+  [STATS.SUC]: 'Инстинкт',
+  [STATS.END]: 'Жизнеспособность',
+  [STATS.INT]: 'Интеллект',
+  [STATS.FREE]: 'Свободных статов',
 
   // Modificators
-  hp: 'Уровень жизни',
-  pw: 'Уровень выносливости',
-  crit: 'Критический удар',
-  a_crit: 'Против критич-го удара',
-  uvorot: 'Увертывание',
-  a_uvorot: 'Против Увертывания',
-  min_damage: 'Мин. урон',
-  max_damage: 'Макс. урон',
+  [MODIFICATORS.HP]: 'Уровень жизни',
+  [MODIFICATORS.PW]: 'Уровень выносливости',
+  [MODIFICATORS.CRIT]: 'Критический удар',
+  [MODIFICATORS.A_CRIT]: 'Против критич-го удара',
+  [MODIFICATORS.UVOROT]: 'Увертывание',
+  [MODIFICATORS.A_UVOROT]: 'Против Увертывания',
+  [MODIFICATORS.MIN_DAMAGE]: 'Мин. урон',
+  [MODIFICATORS.MAX_DAMAGE]: 'Макс. урон',
 
-  armor_head: 'Броня головы',
-  armor_body: 'Броня корпуса',
-  armor_waist: 'Броня пояса',
-  armor_legs: 'Броня ног',
+  [MODIFICATORS.ARMOR_HEAD]: 'Броня головы',
+  [MODIFICATORS.ARMOR_BODY]: 'Броня корпуса',
+  [MODIFICATORS.ARMOR_WAIST]: 'Броня пояса',
+  [MODIFICATORS.ARMOR_LEGS]: 'Броня ног',
 
   // Other
-  maxWear: 'МАКС можно надеть таких предметов', // for stones
-  use_chance: 'Вероятность срабатывания', // for runes
+  [CLOTHES_STATS.MAX_POSSIBLE_WEAR]: 'МАКС можно надеть таких предметов', // for stones
+  [CLOTHES_STATS.USE_CHANCE]: 'Вероятность срабатывания', // for runes
 }
 
 export const armorNameMatch: Record<BackEquipmentTypes, string> = {
-  helmet: 'Шлем',
-  weapon: 'Оружие',
-  armor: 'Броня',
+  [CLOTHES.HELMET]: 'Шлем',
+  [CLOTHES.WEAPON]: 'Оружие',
+  [CLOTHES.ARMOR]: 'Броня',
 
-  earrings: 'Серьги',
-  necklace: 'Ожерелье',
-  gloves: 'Перчатки',
-  bracelets: 'Наручи',
-  ring: 'Кольцо',
-  shield: 'Щит',
-  boots: 'Ботинки',
-  belt: 'Пояс',
+  [CLOTHES.EARRINGS]: 'Серьги',
+  [CLOTHES.NECKLACE]: 'Ожерелье',
+  [CLOTHES.GLOVES]: 'Перчатки',
+  [CLOTHES.BRACELETS]: 'Наручи',
+  [CLOTHES.RING]: 'Кольцо',
+  [CLOTHES.SHIELD]: 'Щит',
+  [CLOTHES.BOOTS]: 'Ботинки',
+  [CLOTHES.BELT]: 'Пояс',
 
-  stone: 'Камень',
-  rune: 'Руна',
+  [CLOTHES.STONE]: 'Камень',
+  [CLOTHES.RUNE]: 'Руна',
 }
 
-const actionNameMatch: Record<BackEquipmentActionsName, string> = {
-  hpHeal: 'Восстанавливает уровень жизни на',
-  pwHeal: 'Восстанавливает уровень выносливости на',
+const actionNameMatch: Record<RUNES_ACTIONS, string> = {
+  [RUNES_ACTIONS.HP_HEAL]: 'Восстанавливает уровень жизни на',
+  [RUNES_ACTIONS.PW_HEAL]: 'Восстанавливает уровень выносливости на',
 }
 
 export const getNameByKey = (key: KeyNameKeys): string => {
   return keyNameMatch[key] ? keyNameMatch[key] : key
 }
 
-export const getActionDescription = (actionObj: { name: BackEquipmentActionsName, val: number}): string => {
+export const getActionDescription = (actionObj: { name: RUNES_ACTIONS, val: number}): string => {
   switch (actionObj.name) {
-    case 'hpHeal':
-      return `${actionNameMatch.hpHeal} ${actionObj.val}`
+    case RUNES_ACTIONS.HP_HEAL:
+      return `${actionNameMatch[RUNES_ACTIONS.HP_HEAL]} ${actionObj.val}`
 
-    case 'pwHeal':
-      return `${actionNameMatch.pwHeal} ${actionObj.val}`
+    case RUNES_ACTIONS.PW_HEAL:
+      return `${actionNameMatch[RUNES_ACTIONS.PW_HEAL]} ${actionObj.val}`
   }
 
   return 'default description for rune'

@@ -3,7 +3,7 @@
     :class="$style.wrapper"
   >
     <img
-      :src="userCommon.avatar"
+      :src="userCommon[BASE_INFO.AVATAR]"
       alt="current user avatar"
       class="cursor-pointer"
       @click="toggleAvatarsPopup"
@@ -35,6 +35,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { storeActionPutOnAvatar } from '~/composables/store'
+import { BASE_INFO } from '~/constants/creaturesParams'
 
 const dialogVisible = ref(false);
 

@@ -23,11 +23,12 @@
 import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
 import { storeActionMapMove } from '~/composables/store';
+import { POSITIONS } from '~/constants/creaturesParams'
 
 const userState = storeStateUserInfo();
 const userPosition = computed(() => userState.value.position);
 const possibleMoves = computed(() => {
-  const currentAreaObj = mapArray[userPosition.value.y][userPosition.value.x]
+  const currentAreaObj = mapArray[userPosition.value[POSITIONS.Y]][userPosition.value[POSITIONS.X]]
   return currentAreaObj.possibleMoves ? currentAreaObj.possibleMoves : ['t', 'l', 'r', 'b']
 });
 

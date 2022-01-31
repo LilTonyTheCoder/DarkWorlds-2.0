@@ -14,8 +14,8 @@
           class="info__map-inner"
           :style="[
             {height: `${(mapArray.length+1) * blockParams.height}px`},
-            {marginTop: `${(userPosition.y - mapArray.length/2) * -blockParams.height - 10}px`},
-            {marginLeft: `${(userPosition.x - mapArray[0].length/2) * -blockParams.width - blockParams.width/2}px`}
+            {marginTop: `${(userPosition[POSITIONS.Y] - mapArray.length/2) * -blockParams.height - 10}px`},
+            {marginLeft: `${(userPosition[POSITIONS.X] - mapArray[0].length/2) * -blockParams.width - blockParams.width/2}px`}
           ]"
         >
           <div
@@ -83,6 +83,7 @@
 <script setup>
 import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
+import { POSITIONS } from '~/constants/creaturesParams'
 
 const blockParams = {
   width: 30, // (*1)

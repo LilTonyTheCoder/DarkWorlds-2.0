@@ -19,7 +19,7 @@
 
         <div class="flex flex-grow flex-column">
           <div class="h5 font-bold">
-            {{ item.info.name }} [{{ item.info.lvl }}]
+            {{ item.info[BASE_INFO.NAME] }} [{{ item.info[BASE_INFO.LVL] }}]
 
             <i
               v-if="item.isAgressive"
@@ -28,11 +28,11 @@
           </div>
 
           <div class="h6">
-            HP: {{ item.info.default_hp }}
+            HP: {{ item.info[MODIFICATORS.HP] }}
           </div>
 
           <div class="h6">
-            Урон: {{ item.damage.min }} - {{ item.damage.max }}
+            Урон: {{ item.modificators[MODIFICATORS.MIN_DAMAGE] }} - {{ item.modificators[MODIFICATORS.MAX_DAMAGE] }}
           </div>
         </div>
 
@@ -51,6 +51,7 @@
 
 <script lang="ts" setup>
 import { getEnemiesListByCoordinate } from '~/backendInfo/npc'
+import { BASE_INFO, MODIFICATORS } from '~/constants/creaturesParams'
 const router = useRouter();
 
 const stateUserInfo = storeStateUserInfo().value.position

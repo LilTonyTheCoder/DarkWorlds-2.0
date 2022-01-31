@@ -1,44 +1,16 @@
-import { StatsTypes } from '~/typings/store'
+import { STATS, MODIFICATORS, BASE_INFO } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS, RUNES_ACTIONS } from '~/constants/clothesInfo'
 
-export type ModificatorsType =
-  'pw' |
-  'hp' |
-  'crit' |
-  'uvorot' |
-  'a_uvorot' |
-  'a_crit' |
-  'armor_head' |
-  'armor_body' |
-  'armor_waist' |
-  'armor_legs' |
-  'min_damage' |
-  'max_damage'
-
-export type BackEquipmentProps = StatsTypes | ModificatorsType
+export type BackEquipmentProps = STATS | MODIFICATORS
 
 export type BackEquipmentRequires =
-  StatsTypes |
-  'lvl' |
-  'maxWear'
+  STATS |
+  BASE_INFO.LVL |
+  CLOTHES_STATS.MAX_POSSIBLE_WEAR
 
 export type BackEquipmentMultitypes = 'rune' | 'stone' | 'ring';
 
-export type BackEquipmentTypes =
-  BackEquipmentMultitypes |
-  'shield' |
-  'helmet' |
-  'boots' |
-  'belt' |
-  'armor' |
-  'earrings' |
-  'necklace' |
-  'gloves' |
-  'weapon' |
-  'bracelets'
-
-export type BackEquipmentActionsName =
-  'pwHeal' |
-  'hpHeal'
+export type BackEquipmentTypes = BackEquipmentMultitypes | CLOTHES
 
 export type BackEquipmentItem = {
   type: BackEquipmentTypes
@@ -57,9 +29,9 @@ export type BackEquipmentItem = {
   props?: Partial<Record<BackEquipmentProps, number>>
 
   action?: {
-    name: 'pwHeal' | 'hpHeal'
+    name: RUNES_ACTIONS
     val: number
-    use_chance: number
+    [CLOTHES_STATS.USE_CHANCE]: number
   },
 }
 

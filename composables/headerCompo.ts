@@ -1,5 +1,6 @@
 import { storeStateUserInfo } from './store'
 import { storeStateHeader } from './store'
+import { BASE_INFO } from '~/constants/creaturesParams'
 
 
 
@@ -11,5 +12,5 @@ export const changeHeaderTitle = (title: string): void => {
 export const resetHeaderTitle = (): void => {
   const storeStateUserInfoLocal = storeStateUserInfo()
 
-  changeHeaderTitle(`${storeStateUserInfoLocal.value.common.name} [${storeStateUserInfoLocal.value.common.lvl}]`)
+  changeHeaderTitle(`${storeStateUserInfoLocal.value.common.name} [${storeStateUserInfoLocal.value.common[BASE_INFO.LVL]}]`)
 }

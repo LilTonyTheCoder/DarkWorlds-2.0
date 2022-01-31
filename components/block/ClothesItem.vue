@@ -13,7 +13,7 @@
       </div>
 
       <div class="h6">
-        Прочность: {{ item.durability }} / {{ item.info.maxDurability }}
+        Прочность: {{ item[CLOTHES_STATS.DURABILITY] }} / {{ item.info[CLOTHES_STATS.MAX_DURABILITY] }}
       </div>
 
       <div class="h6 font-bold mt-2">Требования:</div>
@@ -37,10 +37,10 @@
       </div>
 
       <div
-        v-if="item.action && item.action.use_chance"
+        v-if="item.action && item.action[CLOTHES_STATS.USE_CHANCE]"
         class="h6"
       >
-        {{ getNameByKey('use_chance') }} : {{ item.action.use_chance }}%
+        {{ getNameByKey([CLOTHES_STATS.USE_CHANCE]) }} : {{ item.action[CLOTHES_STATS.USE_CHANCE] }}%
       </div>
 
       <template v-if="item.action">
@@ -69,6 +69,7 @@ import { withDefaults, computed } from 'vue'
 import { storeActionDressItem, storeActionUndressItem, storeActionThrowItemFromInventory } from '~/composables/store';
 import { ClientEquipmentItem } from '~/typings/equipments-items'
 import { EquipedTypes } from '~/typings/store'
+import { CLOTHES_STATS } from '~/constants/clothesInfo'
 
 type ButtonActions = 'default' | 'throwItem'
 

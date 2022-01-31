@@ -1,36 +1,32 @@
+import { BASE_INFO, STATS, MODIFICATORS, POSITIONS } from '~/constants/creaturesParams'
+
 export type BackEnemy = {
   info: {
-    name: string
+    [BASE_INFO.NAME]: string
     img: string
-    lvl: number
-    default_hp: number
+    [BASE_INFO.LVL]: number
+    [MODIFICATORS.HP]: number
+    isAgressive: boolean
   }
 
-  damage: {
-    min: number
-    max: number
+  modificators: {
+    [MODIFICATORS.MIN_DAMAGE]: number
+    [MODIFICATORS.MAX_DAMAGE]: number
   }
 
   experience: number
-  defence: number
-  magical_defence: number
-  accuracy: number
-  dodge: number
-  isAgressive: boolean
 
   stats: {
-    str: number
-    dex: number
-    suc: number
-    end: number
-    int: number
+    [STATS.STR]: number
+    [STATS.DEX]: number
+    [STATS.SUC]: number
+    [STATS.END]: number
+    [STATS.INT]: number
   }
-
-  possible_drop: number[]
 }
 
 export type UniqEnemyParams = {
   prototype: number
-} & Record<'defaultPosition' | 'currentPosition', { x: number; y: number}>
+} & Record<'defaultPosition' | 'currentPosition', { [POSITIONS.X]: number; [POSITIONS.Y]: number}>
 
 export type FullEnemyParams = BackEnemy & UniqEnemyParams & { id: string }
