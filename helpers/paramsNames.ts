@@ -63,6 +63,10 @@ const actionNameMatch: Record<RUNES_ACTIONS, string> = {
   [RUNES_ACTIONS.PW_HEAL]: 'Восстанавливает уровень выносливости на',
 }
 
+export const commonNameMatch: Record<string, string> = {
+  [BASE_INFO.EXP]: 'Опыт'
+}
+
 export const getNameByKey = (key: KeyNameKeys): string => {
   return keyNameMatch[key] ? keyNameMatch[key] : key
 }

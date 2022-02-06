@@ -1,10 +1,8 @@
 <template>
-  <div :class="$style.wrapper">
-    <div class="flex flex-column">
-      <div class="h5 font-bold mb-2">
-        Монстры:
-      </div>
-
+  <div>
+    <UICollapse
+      :title="`Монстры (${enemiesListArray.length}):`"
+    >
       <div
         v-for="item in enemiesListArray"
         :key="item.id"
@@ -45,7 +43,7 @@
           </UIButton>
         </div>
       </div>
-    </div>
+    </UICollapse>
   </div>
 </template>
 
@@ -67,10 +65,6 @@ const openItemInfo = (itemProto: number): void => {
 </script>
 
 <style lang="scss" module>
-.wrapper {
-  border: 1px solid #eee;
-}
-
 .asterisk {
   font-size: 8px;
 }

@@ -6,6 +6,7 @@ export type BackEnemy = {
     img: string
     [BASE_INFO.LVL]: number
     [MODIFICATORS.HP]: number
+    [MODIFICATORS.PW]: number
     isAgressive: boolean
   }
 
@@ -14,7 +15,7 @@ export type BackEnemy = {
     [MODIFICATORS.MAX_DAMAGE]: number
   }
 
-  experience: number
+  [BASE_INFO.EXP]: number
 
   stats: {
     [STATS.STR]: number

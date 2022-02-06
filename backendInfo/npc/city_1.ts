@@ -8,6 +8,7 @@ const items: Record<number, BackEnemy> = {
       img: '/images/enemies/408.jpg',
       [BASE_INFO.LVL]: 5,
       [MODIFICATORS.HP]: 14,
+      [MODIFICATORS.PW]: 10,
       isAgressive: false,
     },
 
@@ -16,14 +17,14 @@ const items: Record<number, BackEnemy> = {
       [MODIFICATORS.MAX_DAMAGE]: 20,
     },
 
-    experience: 18,
+    [BASE_INFO.EXP]: 18,
 
     stats: {
       [STATS.STR]: 5,
       [STATS.DEX]: 3,
       [STATS.SUC]: 8,
       [STATS.END]: 3,
-      [STATS.INT]: 0,
+      [STATS.INT]: 1,
     },
   },
 }
