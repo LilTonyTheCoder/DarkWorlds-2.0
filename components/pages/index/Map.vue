@@ -4,8 +4,8 @@
       <div class="info__map-wrapper">
         <div
           :style="{
-            width: `${blockParams.width * 0.7}px`,
-            height: `${blockParams.height * 0.7}px`,
+            width: `${stateMapBlockSize * 0.7}px`,
+            height: `${stateMapBlockSize * 0.7}px`,
           }"
           class="block__current-position"
         />
@@ -13,24 +13,24 @@
         <div
           class="info__map-inner"
           :style="[
-            {height: `${(mapArray.length+1) * blockParams.height}px`},
-            {marginTop: `${(userPosition[POSITIONS.Y] - mapArray.length/2) * -blockParams.height - 10}px`},
-            {marginLeft: `${(userPosition[POSITIONS.X] - mapArray[0].length/2) * -blockParams.width - blockParams.width/2}px`}
+            {height: `${(mapArray.length+1) * stateMapBlockSize}px`},
+            {marginTop: `${(userPosition[POSITIONS.Y] - mapArray.length/2) * -stateMapBlockSize - 10}px`},
+            {marginLeft: `${(userPosition[POSITIONS.X] - mapArray[0].length/2) * -stateMapBlockSize - stateMapBlockSize/2}px`}
           ]"
         >
           <div
             v-for="(row, rowIndex) in mapArray"
             :key="`rowIndex ${rowIndex}`"
             class="info__row"
-            :style="`width: ${blockParams.width * row.length}px`"
+            :style="`width: ${stateMapBlockSize * row.length}px`"
           >
             <div
               v-for="(block, blockIndex) in row"
               :key="`blockIndex ${blockIndex}`"
               class="info__block block"
               :style="[
-                {width: `${blockParams.width}px`},
-                {height: `${blockParams.height}px`}
+                {width: `${stateMapBlockSize}px`},
+                {height: `${stateMapBlockSize}px`}
               ]"
             >
               <template v-if="block.area !== 'empty'">
@@ -85,11 +85,7 @@ import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
 import { POSITIONS } from '~/constants/creaturesParams'
 
-let blockSize = 30
-const blockParams = {
-  width: blockSize,
-  height: blockSize,
-}
+const stateMapBlockSize = storeStateMapBlockSize()
 
 const areaIconMatch = {
   ground: 'no-image',
@@ -120,11 +116,6 @@ const userPosition = computed(() => userState.value.position)
 </script>
 
 <style lang="scss">
-/**
-  (80 / 100) / 3 = 2.6667
-  30px (*1) - depends on blockParams.width
- */
-$border-param: 30px * 0.26667;
 .main-page {
   &__wrapper {
     .info {
@@ -142,7 +133,7 @@ $border-param: 30px * 0.26667;
         color: #eee;
       }
       &__map-wrapper {
-        height: 240px; // 140
+        height: 240px;
         position: relative;
         overflow: hidden;
         background: #c1bcad;
@@ -168,13 +159,12 @@ $border-param: 30px * 0.26667;
         &__current-position {
           border-radius: 50%;
           background: rgba(255,255,255, .5);
-          // width: 70%;
-          // height: 70%;
           position: absolute;
           top: 50%;
           left: 50%;
           z-index: 10;
           transform: translate(-50%, -50%);
+          filter: blur(4px);
         }
         &__icon {
           width: 50%;
@@ -195,26 +185,10 @@ $border-param: 30px * 0.26667;
           &--b {
             left: 33%;
             width: 33%;
-            height: 2px;
-            bottom: 10%;
-            &::before {
-              content: "";
-              position: absolute;
-              left: 0;
-              top: 1px;
-              width: 1px;
-              height: $border-param;
-              background: #000;
-            }
-            &::after {
-              content: "";
-              position: absolute;
-              right: 0;
-              top: 1px;
-              width: 1px;
-              height: $border-param;
-              background: #000;
-            }
+            height: calc(20% + 2px);
+            bottom: calc(-10% - 1px);
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
           }
           &--t {
             width: 33%;
@@ -223,29 +197,12 @@ $border-param: 30px * 0.26667;
             top: 10%;
           }
           &--l {
-            left: 3px;
             height: 33%;
             top: 33%;
-            left: 10%;
-            width: 2px;
-            &::before {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 1 - $border-param;
-              height: 1px;
-              width: $border-param;
-              background: #000;
-            }
-            &::after {
-              content: "";
-              position: absolute;
-              bottom: 0;
-              left: 1 - $border-param;
-              height: 1px;
-              width: $border-param;
-              background: #000;
-            }
+            width: calc(20% + 2px);
+            left: calc(-10% - 1px);
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
           }
           &--r {
             height: 33%;

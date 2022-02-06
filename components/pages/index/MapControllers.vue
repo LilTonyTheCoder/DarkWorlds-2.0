@@ -1,22 +1,17 @@
 <template>
   <div :class="['absolute', $style.wrapper]">
     <div>
-      <div class="ml-auto mb-1 flex flex-column align-end">
+      <div class="mb-1 flex justify-center">
         <UIButton
-          class="routes__line line"
+          v-for="item in sizesButtons"
+          :key="item.title"
+          class="routes__line line mr-1"
           icon-only
           size="S"
-          @click="resizeMap(15)"
+          :disabled="item.disabled"
+          @click="storeActionSetMapBlockSize(item.val)"
         >
-          +
-        </UIButton>
-        <UIButton
-          class="routes__line line"
-          icon-only
-          size="S"
-          @click="resizeMap(-15)"
-        >
-          -
+          {{ item.title }}
         </UIButton>
       </div>
       <div :class="['flex flex-wrap-reverse align-center justify-center p-3', $style.panel]">
@@ -40,15 +35,31 @@
 <script setup lang="ts">
 import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
-import { storeActionMapMove } from '~/composables/store';
+import { storeActionMapMove, storeActionSetMapBlockSize } from '~/composables/store';
 import { POSITIONS } from '~/constants/creaturesParams'
+import { MapSizes, MapSizesTitles } from '~/constants/mapInfo'
 
-const userState = storeStateUserInfo();
-const userPosition = computed(() => userState.value.position);
+const stateMapBlockSize = storeStateMapBlockSize()
+const userState = storeStateUserInfo()
+const userPosition = computed(() => userState.value.position)
 const possibleMoves = computed(() => {
   const currentAreaObj = mapArray[userPosition.value[POSITIONS.Y]][userPosition.value[POSITIONS.X]]
   return currentAreaObj.possibleMoves ? currentAreaObj.possibleMoves : ['t', 'l', 'r', 'b']
-});
+})
+
+const sizesButtons = computed<{
+  title: string
+  val: string
+  disabled: boolean
+}[]>(() => {
+  return Object.keys(MapSizes).map(key => {
+    return {
+      title: MapSizesTitles[key],
+      val: MapSizes[key],
+      disabled: stateMapBlockSize.value === MapSizes[key]
+    }
+  })
+})
 
 const routesArray = computed(() => {
   let outputArray = [
@@ -61,10 +72,6 @@ const routesArray = computed(() => {
   return outputArray
 });
 
-const userMapMove = (direction) => { // userMapMove: 'user/storeActionMapMove',
-  storeActionMapMove(direction)
-}
-
 const handleMove = (direction) => {
   const canMove = routesArray.value.find(el => el.name === direction).canMove
 
@@ -73,24 +80,14 @@ const handleMove = (direction) => {
     return
   }
 
-  // simply call storeActionMapMove(direction) ?
-  userMapMove(direction)
+  storeActionMapMove(direction)
 }
 
-const resizeMap = (sizeDifference: number) => {
-  // @@TODO emmit event
-  // $emit('changeIndexMapSize', sizeDifference)
-  console.log('resize', sizeDifference)
-}
-
-const listenKeyPress = (event) => {
+const listenKeyPress = (event: KeyboardEvent) => {
   if (event.keyCode === 37 || event.keyCode === 65) handleMove('←')
   if (event.keyCode === 38 || event.keyCode === 87) handleMove('↑')
   if (event.keyCode === 39 || event.keyCode === 68) handleMove('→')
   if (event.keyCode === 40 || event.keyCode === 83) handleMove('↓')
-
-  if (event.keyCode === 187) resizeMap(15)
-  if (event.keyCode === 189) resizeMap(-15)
 }
 
 onMounted(() => {

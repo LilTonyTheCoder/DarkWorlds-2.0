@@ -2,8 +2,6 @@ import { storeStateUserInfo } from './store'
 import { storeStateHeader } from './store'
 import { BASE_INFO } from '~/constants/creaturesParams'
 
-
-
 export const changeHeaderTitle = (title: string): void => {
   const storeStateHeaderLocal = storeStateHeader()
   storeStateHeaderLocal.value.title = title

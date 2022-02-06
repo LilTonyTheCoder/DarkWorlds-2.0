@@ -4,11 +4,13 @@
       'cursor-pointer flex align-center justify-center',
       $style.button,
       { [$style.w100]: fullWidth},
+      { [$style.disabled]: disabled},
       { [$style.noBorder]: variant === 'text'},
       { [$style.iconOnly]: iconOnly},
       { [$style.sizeM]: size === 'M'},
       { 'h5': size === 'M'},
       { [$style.sizeS]: size === 'S'},
+      { 'h6': size === 'S'},
       $style[variant]
     ]"
     @click="handleClick"
@@ -26,22 +28,26 @@ interface Props {
   variant?: 'primary' | 'secondary' | 'text',
   iconOnly?: boolean
   size?: 'L' | 'M' | 'S'
+  disabled?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   to: null,
   fullWidth: false,
   variant: 'primary',
   iconOnly: false,
-  size: 'L'
+  size: 'L',
+  disabled: false
 })
-const { to, fullWidth, variant, iconOnly, size } = props
+// const { to, fullWidth, variant, iconOnly, size, disabled } = props
 
 const router = useRouter();
 const emit = defineEmits(['click'])
 
 const handleClick = () => {
-  if (to) {
-    router.push(to)
+  if (props.disabled) return;
+
+  if (props.to) {
+    router.push(props.to)
   } else {
     emit('click')
   }
@@ -62,6 +68,13 @@ const handleClick = () => {
     color: #409eff;
     border-color: #c6e2ff;
     background-color: #ecf5ff;
+  }
+
+  &.disabled {
+    color: #409effd6;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff;
+    cursor: not-allowed;
   }
 
   &.noBorder {

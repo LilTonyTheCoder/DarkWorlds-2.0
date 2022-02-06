@@ -18,3 +18,8 @@ export {
   storeActionPutOnAvatar,
   storeActionIncreaseStat
 } from './store/user'
+
+export {
+  storeStateMapBlockSize,
+  storeActionSetMapBlockSize
+} from './store/map'
