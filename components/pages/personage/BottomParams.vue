@@ -1,20 +1,20 @@
 <template>
   <div>
-    <div class="text-dark-grey font-bold flex align-center h-9">Параметры</div>
+    <UICollapse title="Параметры">
+      <div
+        v-for="(param, index) in paramsToShow"
+        :key="index"
+        :class="['flex align-center justify-between h-9', $style.paramRow, $style[`paramRow--${param}`]]"
+      >
+        <div> {{ getNameByKey(param) }} </div>
 
-    <div
-      v-for="(param, index) in paramsToShow"
-      :key="index"
-      :class="['flex align-center justify-between h-9', $style.paramRow, $style[`paramRow--${param}`]]"
-    >
-      <div> {{ getNameByKey(param) }} </div>
-
-      <div>
-        <b>
-          + {{ allWearedModificators[param] }}
-        </b>
+        <div>
+          <b>
+            + {{ allWearedModificators[param] }}
+          </b>
+        </div>
       </div>
-    </div>
+    </UICollapse>
   </div>
 </template>
 

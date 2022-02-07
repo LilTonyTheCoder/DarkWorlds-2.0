@@ -20,42 +20,38 @@
 
     <div class="h-9" />
 
-    <div class="text-dark-grey font-bold flex align-center h-9">
-      Характеристики
-    </div>
-
-    <div
-      v-for="(stat, key, index) in filteredUserStats"
-      :key="index"
-      class="flex align-center justify-between h-9"
-    >
-      <div class="item__text">
-        {{ getNameByKey(key) }}
-      </div>
-
-      <div class="item__right flex">
-        <div class="item__num w-24 text-right pr-3">
-          <b>{{ stat + allWearedModificators[key] }}</b>
-          <span v-if="allWearedModificators[key]">
-            ( {{ stat }} + {{ allWearedModificators[key] }} )
-          </span>
+    <UICollapse title="Характеристики">
+      <div
+        v-for="(stat, key, index) in filteredUserStats"
+        :key="index"
+        class="flex align-center justify-between h-9"
+      >
+        <div class="item__text">
+          {{ getNameByKey(key) }}
         </div>
 
-        <div class="flex justify-center align-center">
-          <UIButton
-            v-if="!disableIncreaseStatsButton"
-            size="S"
-            icon-only
-            @click="storeActionIncreaseStat(key)"
-          >
-            +
-          </UIButton>
-          <!-- <el-button size="mini" circle>-</el-button> -->
+        <div class="item__right flex">
+          <div class="item__num w-24 text-right pr-3">
+            <b>{{ stat + allWearedModificators[key] }}</b>
+            <span v-if="allWearedModificators[key]">
+              ( {{ stat }} + {{ allWearedModificators[key] }} )
+            </span>
+          </div>
+
+          <div class="flex justify-center align-center">
+            <UIButton
+              v-if="!disableIncreaseStatsButton"
+              size="S"
+              icon-only
+              @click="storeActionIncreaseStat(key)"
+            >
+              +
+            </UIButton>
+            <!-- <el-button size="mini" circle>-</el-button> -->
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="h-9" />
+    </UICollapse>
   </div>
 </template>
 
