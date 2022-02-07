@@ -1,71 +1,80 @@
 <template>
-  <div class="left-menu">
-    <div
-      class="left-menu__shadow"
-      @click="storeActionToggleLeftMenu"
-    />
+  <transition :duration="500" name="leftSlider">
+    <div v-if="isOpen" class="left-menu">
+      <div
+        class="left-menu__shadow cursor-pointer"
+        @click="storeActionToggleLeftMenu"
+      />
 
-    <div class="left-menu__inner inner">
-      <div class="inner__row row row--info">
-        <div class="row--info__avatar">
-          <img
-            :src="userState.common[BASE_INFO.AVATAR]"
-            alt=""
+      <div class="left-menu__inner inner">
+        <div class="inner__row row row--info">
+          <div class="row--info__avatar">
+            <img
+              :src="userState.common[BASE_INFO.AVATAR]"
+              alt=""
+            >
+          </div>
+
+          <div class="row--info__text">
+            <div class="row--info__name">
+              {{ userState.common[BASE_INFO.NAME] }}
+            </div>
+
+            <div class="row--info__lvl">
+              {{ userState.common[BASE_INFO.CLASS] }} {{ userState.common[BASE_INFO.LVL] }} уровня
+            </div>
+          </div>
+        </div>
+
+        <div class="inner__top-links">
+          <div
+            v-for="(item, index) in topLinks"
+            :key="index"
+            class="inner__row row"
+            @click="itemHandler(item.href)"
           >
-        </div>
+            <div class="row__icon">
+              <i :class="item.icon" />
+            </div>
 
-        <div class="row--info__text">
-          <div class="row--info__name">
-            {{ userState.common[BASE_INFO.NAME] }}
-          </div>
-
-          <div class="row--info__lvl">
-            {{ userState.common[BASE_INFO.CLASS] }} {{ userState.common[BASE_INFO.LVL] }} уровня
+            <div class="row__title">
+              {{ item.title }}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="inner__top-links">
-        <div
-          v-for="(item, index) in topLinks"
-          :key="index"
-          class="inner__row row"
-          @click="itemHandler(item.href)"
-        >
-          <div class="row__icon">
-            <i :class="item.icon" />
-          </div>
+        <div class="inner__middle-links">
+          <div
+            v-for="(item, index) in middleLinks"
+            :key="index"
+            class="inner__row row"
+            @click="itemHandler(item.href)"
+          >
+            <div class="row__icon">
+              <i :class="item.icon" />
+            </div>
 
-          <div class="row__title">
-            {{ item.title }}
-          </div>
-        </div>
-      </div>
-
-      <div class="inner__middle-links">
-        <div
-          v-for="(item, index) in middleLinks"
-          :key="index"
-          class="inner__row row"
-          @click="itemHandler(item.href)"
-        >
-          <div class="row__icon">
-            <i :class="item.icon" />
-          </div>
-
-          <div class="row__title">
-            {{ item.title }}
+            <div class="row__title">
+              {{ item.title }}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script setup lang="ts">
 import { storeActionToggleLeftMenu } from '~/composables/store'
 import { useRouter } from 'vue-router'
 import { BASE_INFO } from '~/constants/creaturesParams'
+
+interface Props {
+  isOpen: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  isOpen: false,
+})
 
 const userState = storeStateUserInfo()
 const isLeftMenuOpen = storeStateLeftMenu()
@@ -175,5 +184,27 @@ const itemHandler = (href: string): void => {
       }
     }
   }
+}
+</style>
+
+<style lang="scss">
+.leftSlider-enter-active .left-menu__inner,
+.leftSlider-leave-active .left-menu__inner {
+  transition: transform 0.5s ease;
+}
+
+.leftSlider-enter-from .left-menu__inner,
+.leftSlider-leave-to .left-menu__inner {
+  transform: translateX(-100%);
+}
+
+.leftSlider-enter-active .left-menu__shadow,
+.leftSlider-leave-active .left-menu__shadow {
+  transition: opacity 0.5s ease;
+}
+
+.leftSlider-enter-from .left-menu__shadow,
+.leftSlider-leave-to .left-menu__shadow {
+  opacity: 0;
 }
 </style>

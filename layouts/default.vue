@@ -7,7 +7,7 @@
         <slot />
       </div>
 
-      <SectionLeftMenu v-if="isLeftMenuOpen" />
+      <SectionLeftMenu :is-open="isLeftMenuOpen" />
 
       <SectionChat />
 
