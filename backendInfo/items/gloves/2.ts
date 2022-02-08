@@ -1,159 +1,162 @@
 import { BackEquipmentItem } from '~/typings/equipments-items'
+import { BASE_INFO, MODIFICATORS, STATS } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS} from '~/constants/clothesInfo'
+import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
 const items: Record<number, BackEquipmentItem> = {
   9000: {
-    type: 'gloves',
+    type: CLOTHES.GLOVES,
     img: '/images/items/gloves/2/1.gif',
 
     info: {
       title: "Руки В Крови",
-      priceGold: 11,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 11,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 1,
-      suc: 5,
-      end: 4,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 5,
+      [STATS.END]: 4,
     },
 
     props: {
-      hp: 6,
-      pw: 3,
-      crit: 6,
-      a_crit: 4,
+      [MODIFICATORS.HP]: 6,
+      [MODIFICATORS.PW]: 3,
+      [MODIFICATORS.CRIT]: 6,
+      [MODIFICATORS.A_CRIT]: 4,
     },
   },
 
   9001: {
-    type: 'gloves',
+    type: CLOTHES.GLOVES,
     img: '/images/items/gloves/2/11.gif',
 
     info: {
       title: "Разменные Перчатки",
-      priceGold: 11,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 11,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 4,
-      suc: 4,
-      end: 1,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 4,
+      [STATS.SUC]: 4,
+      [STATS.END]: 1,
     },
 
     props: {
-      hp: 4,
-      pw: 4,
-      crit: 6,
-      uvorot: 6,
+      [MODIFICATORS.HP]: 4,
+      [MODIFICATORS.PW]: 4,
+      [MODIFICATORS.CRIT]: 6,
+      [MODIFICATORS.UVOROT]: 6,
     },
   },
 
   9002: {
-    type: 'gloves',
+    type: CLOTHES.GLOVES,
     img: '/images/items/gloves/2/3.gif',
 
     info: {
       title: "Перчатки Варвара",
-      priceGold: 15,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 2,
-      str: 5,
-      dex: 1,
-      suc: 1,
-      end: 5,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 5,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 5,
     },
 
     props: {
-      hp: 8,
-      pw: 3,
-      a_crit: 4,
-      a_uvorot: 4,
+      [MODIFICATORS.HP]: 8,
+      [MODIFICATORS.PW]: 3,
+      [MODIFICATORS.A_CRIT]: 4,
+      [MODIFICATORS.A_UVOROT]: 4,
     },
   },
 
   9003: {
-    type: 'gloves',
+    type: CLOTHES.GLOVES,
     img: '/images/items/gloves/2/18.gif',
 
     info: {
       title: "Перчатки из Копченой Шкуры",
-      priceGold: 15,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 5,
-      suc: 1,
-      end: 4,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 5,
+      [STATS.SUC]: 1,
+      [STATS.END]: 4,
     },
 
     props: {
-      hp: 6,
-      pw: 3,
-      uvorot: 6,
-      a_uvorot: 4,
+      [MODIFICATORS.HP]: 6,
+      [MODIFICATORS.PW]: 3,
+      [MODIFICATORS.UVOROT]: 6,
+      [MODIFICATORS.A_UVOROT]: 4,
     },
   },
 
   9004: {
-    type: 'gloves',
+    type: CLOTHES.GLOVES,
     img: '/images/items/gloves/2/22.gif',
 
     info: {
       title: "Парадные Перчатки",
-      priceGold: 15,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 2,
-      str: 3,
-      dex: 2,
-      suc: 4,
-      end: 3,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 3,
+      [STATS.DEX]: 2,
+      [STATS.SUC]: 4,
+      [STATS.END]: 3,
     },
 
     props: {
-      hp: 6,
-      pw: 3,
-      a_crit: 6,
-      uvorot: 4,
+      [MODIFICATORS.HP]: 6,
+      [MODIFICATORS.PW]: 3,
+      [MODIFICATORS.A_CRIT]: 6,
+      [MODIFICATORS.UVOROT]: 4,
     },
   },
 
   9005: {
-    type: 'gloves',
+    type: CLOTHES.GLOVES,
     img: '/images/items/gloves/2/23.gif',
 
     info: {
       title: "Волчий Коготь",
-      priceGold: 15,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 2,
-      str: 3,
-      dex: 4,
-      suc: 2,
-      end: 3,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 3,
+      [STATS.DEX]: 4,
+      [STATS.SUC]: 2,
+      [STATS.END]: 3,
     },
 
     props: {
-      hp: 6,
-      pw: 3,
-      crit: 4,
-      a_uvorot: 6,
+      [MODIFICATORS.HP]: 6,
+      [MODIFICATORS.PW]: 3,
+      [MODIFICATORS.CRIT]: 4,
+      [MODIFICATORS.A_UVOROT]: 6,
     },
   },
 }

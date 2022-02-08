@@ -1,81 +1,84 @@
 import { BackEquipmentItem } from '~/typings/equipments-items'
+import { BASE_INFO, MODIFICATORS, STATS } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS } from '~/constants/clothesInfo'
+import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
 const items: Record<number, BackEquipmentItem> = {
   11000: {
-    type: 'weapon',
+    type: CLOTHES.WEAPON,
     img: '/images/items/weapon/dubina/1/2.gif',
 
     info: {
       title: "Волчий Голод",
-      priceGold: 14,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 14,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 6,
-      dex: 1,
-      suc: 1,
-      end: 6,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 6,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 6,
     },
 
     props: {
-      a_crit: 3,
-      a_uvorot: 3,
-      min_damage: 4,
-      max_damage: 8,
+      [MODIFICATORS.A_CRIT]: 3,
+      [MODIFICATORS.A_UVOROT]: 3,
+      [MODIFICATORS.MIN_DAMAGE]: 4,
+      [MODIFICATORS.MAX_DAMAGE]: 8,
     },
   },
 
   11001: {
-    type: 'weapon',
+    type: CLOTHES.WEAPON,
     img: '/images/items/weapon/dubina/1/3.gif',
 
     info: {
       title: "Усмиряющая Дубина",
-      priceGold: 14,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 14,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 6,
-      dex: 1,
-      suc: 1,
-      end: 6,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 6,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 6,
     },
 
     props: {
-      a_crit: 4,
-      a_uvorot: 4,
-      min_damage: 3,
-      max_damage: 8,
+      [MODIFICATORS.A_CRIT]: 4,
+      [MODIFICATORS.A_UVOROT]: 4,
+      [MODIFICATORS.MIN_DAMAGE]: 3,
+      [MODIFICATORS.MAX_DAMAGE]: 8,
     },
   },
 
   11002: {
-    type: 'weapon',
+    type: CLOTHES.WEAPON,
     img: '/images/items/weapon/dubina/1/4.gif',
 
     info: {
       title: "Тонфу",
-      priceGold: 14,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 14,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 6,
-      dex: 1,
-      suc: 1,
-      end: 6,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 6,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 6,
     },
 
     props: {
-      a_crit: 4,
-      a_uvorot: 4,
-      min_damage: 4,
-      max_damage: 7,
+      [MODIFICATORS.A_CRIT]: 4,
+      [MODIFICATORS.A_UVOROT]: 4,
+      [MODIFICATORS.MIN_DAMAGE]: 4,
+      [MODIFICATORS.MAX_DAMAGE]: 7,
     },
   },
 }

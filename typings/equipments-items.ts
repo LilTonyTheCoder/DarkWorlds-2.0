@@ -1,5 +1,6 @@
 import { STATS, MODIFICATORS, BASE_INFO } from '~/constants/creaturesParams'
 import { CLOTHES, CLOTHES_STATS, RUNES_ACTIONS } from '~/constants/clothesInfo'
+import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
 export type BackEquipmentProps = STATS | MODIFICATORS
 
@@ -19,9 +20,9 @@ export type BackEquipmentItem = {
 
   info: {
     title: string
-    priceGold?: number
-    maxDurability: number
-    pricePlatinum?: number
+    [FINANCE_CURRENSIES.GOLD]?: number
+    [FINANCE_CURRENSIES.PLATINUM]?: number
+    [CLOTHES_STATS.MAX_DURABILITY]: number
   },
 
   require?: Partial<Record<BackEquipmentRequires, number>>

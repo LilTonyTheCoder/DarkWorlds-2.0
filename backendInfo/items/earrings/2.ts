@@ -1,150 +1,153 @@
 import { BackEquipmentItem } from '~/typings/equipments-items'
+import { BASE_INFO, MODIFICATORS, STATS } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS } from '~/constants/clothesInfo'
+import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
 const items: Record<number, BackEquipmentItem> = {
   7000: {
-    type: 'earrings',
+    type: CLOTHES.EARRINGS,
     img: '/images/items/earrings/2/1.gif',
 
     info: {
       title: "Малый Элиниум",
-      priceGold: 15,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      str: 1,
-      hp: 14,
+      [STATS.STR]: 1,
+      [MODIFICATORS.HP]: 14,
     },
   },
 
   7001: {
-    type: 'earrings',
+    type: CLOTHES.EARRINGS,
     img: '/images/items/earrings/2/12.gif',
 
     info: {
       title: "Серьги Лабиринта",
-      priceGold: 15,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      suc: 1,
-      hp: 14,
+      [STATS.SUC]: 1,
+      [MODIFICATORS.HP]: 14,
     },
   },
 
   7002: {
-    type: 'earrings',
+    type: CLOTHES.EARRINGS,
     img: '/images/items/earrings/2/13.gif',
 
     info: {
       title: "Глаз Огня",
-      priceGold: 15,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      hp: 20,
-      pw: 5,
+      [MODIFICATORS.HP]: 20,
+      [MODIFICATORS.PW]: 5,
     },
   },
 
   7003: {
-    type: 'earrings',
+    type: CLOTHES.EARRINGS,
     img: '/images/items/earrings/2/14.gif',
 
     info: {
       title: "Рог Изобилия",
-      priceGold: 15,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      dex: 1,
-      hp: 14,
+      [STATS.DEX]: 1,
+      [MODIFICATORS.HP]: 14,
     },
   },
 
   7004: {
-    type: 'earrings',
+    type: CLOTHES.EARRINGS,
     img: '/images/items/earrings/2/26.gif',
 
     info: {
       title: "Янтарные Серьги",
-      priceGold: 15,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      crit: 6,
-      a_crit: 7,
-      uvorot: 6,
-      a_uvorot: 7,
+      [MODIFICATORS.CRIT]: 6,
+      [MODIFICATORS.A_CRIT]: 7,
+      [MODIFICATORS.UVOROT]: 6,
+      [MODIFICATORS.A_UVOROT]: 7,
     },
   },
 
   7005: {
-    type: 'earrings',
+    type: CLOTHES.EARRINGS,
     img: '/images/items/earrings/2/39.gif',
 
     info: {
       title: "Вещие Серьги",
-      priceGold: 15,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 15,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 2,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 2,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      hp: 9,
-      a_crit: 8,
-      a_uvorot: 8,
+      [MODIFICATORS.HP]: 9,
+      [MODIFICATORS.A_CRIT]: 8,
+      [MODIFICATORS.A_UVOROT]: 8,
     },
   },
 }

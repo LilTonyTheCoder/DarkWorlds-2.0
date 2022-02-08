@@ -1,144 +1,147 @@
 import { BackEquipmentItem } from '~/typings/equipments-items'
+import { BASE_INFO, MODIFICATORS, STATS } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS } from '~/constants/clothesInfo'
+import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
 const items: Record<number, BackEquipmentItem> = {
   4000: {
-    type: 'ring',
+    type: CLOTHES.RING,
     img: '/images/items/rings/1/2.gif',
 
     info: {
       title: "Круг Проворства",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      dex: 1,
+      [STATS.DEX]: 1,
     },
   },
 
   4001: {
-    type: 'ring',
+    type: CLOTHES.RING,
     img: '/images/items/rings/1/29.gif',
 
     info: {
       title: "Кольцо Обмана",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      uvorot: 6,
-      a_uvorot: 6,
+      [MODIFICATORS.UVOROT]: 6,
+      [MODIFICATORS.A_UVOROT]: 6,
     },
   },
 
   4002: {
-    type: 'ring',
+    type: CLOTHES.RING,
     img: '/images/items/rings/1/26.gif',
 
     info: {
       title: "Кольцо Глубин",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      crit: 6,
-      a_crit: 6,
+      [MODIFICATORS.CRIT]: 6,
+      [MODIFICATORS.A_CRIT]: 6,
     },
   },
 
   4003: {
-    type: 'ring',
+    type: CLOTHES.RING,
     img: '/images/items/rings/1/1.gif',
 
     info: {
       title: "Инстинкт Убийцы",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      suc: 1,
+      [STATS.SUC]: 1,
     },
   },
 
   4004: {
-    type: 'ring',
+    type: CLOTHES.RING,
     img: '/images/items/rings/1/16.gif',
 
     info: {
       title: "Отрицание Смерти",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      hp: 9,
-      pw: 3,
+      [MODIFICATORS.HP]: 9,
+      [MODIFICATORS.PW]: 3,
     },
   },
 
   4005: {
-    type: 'ring',
+    type: CLOTHES.RING,
     img: '/images/items/rings/1/3.gif',
 
     info: {
       title: "Сила Убеждения",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      str: 1,
+      [STATS.STR]: 1,
     },
   },
 }

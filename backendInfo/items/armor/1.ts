@@ -1,79 +1,82 @@
 import { BackEquipmentItem } from '~/typings/equipments-items'
+import { BASE_INFO, MODIFICATORS, STATS } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS } from '~/constants/clothesInfo'
+import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
 const items: Record<number, BackEquipmentItem> = {
   6000: {
-    type: 'armor',
+    type: CLOTHES.ARMOR,
     img: '/images/items/armor/1/28.gif',
 
     info: {
       title: "Полуночный Жилет",
-      priceGold: 8,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 8,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 3,
-      dex: 5,
-      suc: 5,
-      end: 3,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 3,
+      [STATS.DEX]: 5,
+      [STATS.SUC]: 5,
+      [STATS.END]: 3,
     },
 
     props: {
-      crit: 3,
-      a_crit: 3,
-      uvorot: 3,
-      a_uvorot: 3,
-      armor_body: 2,
+      [MODIFICATORS.CRIT]: 3,
+      [MODIFICATORS.A_CRIT]: 3,
+      [MODIFICATORS.UVOROT]: 3,
+      [MODIFICATORS.A_UVOROT]: 3,
+      [MODIFICATORS.ARMOR_BODY]: 2,
     },
   },
 
   6001: {
-    type: 'armor',
+    type: CLOTHES.ARMOR,
     img: '/images/items/armor/1/29.gif',
 
     info: {
       title: "Полуденный Жилет",
-      priceGold: 8,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 8,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 5,
-      dex: 5,
-      suc: 5,
-      end: 5,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 5,
+      [STATS.DEX]: 5,
+      [STATS.SUC]: 5,
+      [STATS.END]: 5,
     },
 
     props: {
-      str: 1,
-      armor_body: 3,
+      [STATS.STR]: 1,
+      [MODIFICATORS.ARMOR_BODY]: 3,
     },
   },
 
   6002: {
-    type: 'armor',
+    type: CLOTHES.ARMOR,
     img: '/images/items/armor/1/27.gif',
 
     info: {
       title: "Легкий Колет",
-      priceGold: 8,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 8,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 6,
-      dex: 3,
-      suc: 3,
-      end: 6,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 6,
+      [STATS.DEX]: 3,
+      [STATS.SUC]: 3,
+      [STATS.END]: 6,
     },
 
     props: {
-      hp: 5,
-      pw: 5,
-      armor_body: 5,
+      [MODIFICATORS.HP]: 5,
+      [MODIFICATORS.PW]: 5,
+      [MODIFICATORS.ARMOR_BODY]: 5,
     },
   },
 }

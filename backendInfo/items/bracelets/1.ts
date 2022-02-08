@@ -1,127 +1,130 @@
 import { BackEquipmentItem } from '~/typings/equipments-items'
+import { BASE_INFO, MODIFICATORS, STATS } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS } from '~/constants/clothesInfo'
+import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
 const items: Record<number, BackEquipmentItem> = {
   12000: {
-    type: 'bracelets',
+    type: CLOTHES.BRACELETS,
     img: '/images/items/bracelets/1/10.gif',
 
     info: {
       title: "Браслеты Душегуба",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      crit: 3,
-      a_crit: 3,
-      uvorot: 3,
+      [MODIFICATORS.CRIT]: 3,
+      [MODIFICATORS.A_CRIT]: 3,
+      [MODIFICATORS.UVOROT]: 3,
     },
   },
 
   12001: {
-    type: 'bracelets',
+    type: CLOTHES.BRACELETS,
     img: '/images/items/bracelets/1/11.gif',
 
     info: {
       title: "Страж Рекрута",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      crit: 3,
-      uvorot: 3,
-      a_uvorot: 3,
+      [MODIFICATORS.CRIT]: 3,
+      [MODIFICATORS.UVOROT]: 3,
+      [MODIFICATORS.A_UVOROT]: 3,
     },
   },
 
   12002: {
-    type: 'bracelets',
+    type: CLOTHES.BRACELETS,
     img: '/images/items/bracelets/1/12.gif',
 
     info: {
       title: "Карибские Наручи",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      a_crit: 3,
-      uvorot: 3,
-      a_uvorot: 3,
+      [MODIFICATORS.A_CRIT]: 3,
+      [MODIFICATORS.UVOROT]: 3,
+      [MODIFICATORS.A_UVOROT]: 3,
     },
   },
 
   12003: {
-    type: 'bracelets',
+    type: CLOTHES.BRACELETS,
     img: '/images/items/bracelets/1/13.gif',
 
     info: {
       title: "Наручи из Грубой Кожи",
-      priceGold: 5,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      crit: 3,
-      a_crit: 3,
-      a_uvorot: 3,
+      [MODIFICATORS.CRIT]: 3,
+      [MODIFICATORS.A_CRIT]: 3,
+      [MODIFICATORS.A_UVOROT]: 3,
     },
   },
 
   12004: {
-    type: 'bracelets',
+    type: CLOTHES.BRACELETS,
     img: '/images/items/bracelets/1/1.gif',
 
     info: {
       title: "Кожаный Браслет",
-      priceGold: 6,
-      maxDurability: 20,
+      [FINANCE_CURRENSIES.GOLD]: 6,
+      [CLOTHES_STATS.MAX_DURABILITY]: 20,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 1,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 1,
     },
 
     props: {
-      hp: 5,
-      pw: 5,
+      [MODIFICATORS.HP]: 5,
+      [MODIFICATORS.PW]: 5,
     },
   },
 }

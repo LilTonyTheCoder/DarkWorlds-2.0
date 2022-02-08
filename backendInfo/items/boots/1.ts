@@ -1,159 +1,162 @@
 import { BackEquipmentItem } from '~/typings/equipments-items'
+import { BASE_INFO, MODIFICATORS, STATS } from '~/constants/creaturesParams'
+import { CLOTHES, CLOTHES_STATS } from '~/constants/clothesInfo'
+import { FINANCE_CURRENSIES } from '~/constants/userStore'
 
 const items: Record<number, BackEquipmentItem> = {
   2000: {
-    type: 'boots',
+    type: CLOTHES.BOOTS,
     img: '/images/items/boots/1/19.gif',
 
     info: {
       title: "Сапоги Острого Лезвия",
-      priceGold: 5,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 3,
-      dex: 4,
-      suc: 2,
-      end: 3,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 3,
+      [STATS.DEX]: 4,
+      [STATS.SUC]: 2,
+      [STATS.END]: 3,
     },
 
     props: {
-      hp: 5,
-      crit: 1,
-      a_uvorot: 2,
-      armor_legs: 2,
+      [MODIFICATORS.HP]: 5,
+      [MODIFICATORS.CRIT]: 1,
+      [MODIFICATORS.A_UVOROT]: 2,
+      [MODIFICATORS.ARMOR_LEGS]: 2,
     },
   },
 
   2001: {
-    type: 'boots',
+    type: CLOTHES.BOOTS,
     img: '/images/items/boots/1/18.gif',
 
     info: {
       title: "Ботинки Лесоруба",
-      priceGold: 5,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 1,
-      suc: 6,
-      end: 4,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 6,
+      [STATS.END]: 4,
     },
 
     props: {
-      hp: 3,
-      crit: 2,
-      a_crit: 1,
-      armor_legs: 4,
+      [MODIFICATORS.HP]: 3,
+      [MODIFICATORS.CRIT]: 2,
+      [MODIFICATORS.A_CRIT]: 1,
+      [MODIFICATORS.ARMOR_LEGS]: 4,
     },
   },
 
   2002: {
-    type: 'boots',
+    type: CLOTHES.BOOTS,
     img: '/images/items/boots/1/460.gif',
 
     info: {
       title: "Самодельные Боты",
-      priceGold: 5,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 6,
-      dex: 1,
-      suc: 1,
-      end: 6,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 6,
+      [STATS.DEX]: 1,
+      [STATS.SUC]: 1,
+      [STATS.END]: 6,
     },
 
     props: {
-      hp: 3,
-      a_crit: 1,
-      a_uvorot: 1,
-      armor_legs: 5,
+      [MODIFICATORS.HP]: 3,
+      [MODIFICATORS.A_CRIT]: 1,
+      [MODIFICATORS.A_UVOROT]: 1,
+      [MODIFICATORS.ARMOR_LEGS]: 5,
     },
   },
 
   2003: {
-    type: 'boots',
+    type: CLOTHES.BOOTS,
     img: '/images/items/boots/1/22.gif',
 
     info: {
       title: "Гримсы",
-      priceGold: 5,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 5,
-      suc: 5,
-      end: 1,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 5,
+      [STATS.SUC]: 5,
+      [STATS.END]: 1,
     },
 
     props: {
-      hp: 2,
-      crit: 3,
-      uvorot: 3,
-      armor_legs: 2,
+      [MODIFICATORS.HP]: 2,
+      [MODIFICATORS.CRIT]: 3,
+      [MODIFICATORS.UVOROT]: 3,
+      [MODIFICATORS.ARMOR_LEGS]: 2,
     },
   },
 
   2004: {
-    type: 'boots',
+    type: CLOTHES.BOOTS,
     img: '/images/items/boots/1/3.gif',
 
     info: {
       title: "Тяжелая Поступь",
-      priceGold: 5,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 3,
-      dex: 2,
-      suc: 4,
-      end: 3,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 3,
+      [STATS.DEX]: 2,
+      [STATS.SUC]: 4,
+      [STATS.END]: 3,
     },
 
     props: {
-      hp: 5,
-      a_crit: 1,
-      uvorot: 2,
-      armor_legs: 3,
+      [MODIFICATORS.HP]: 5,
+      [MODIFICATORS.A_CRIT]: 1,
+      [MODIFICATORS.UVOROT]: 2,
+      [MODIFICATORS.ARMOR_LEGS]: 3,
     },
   },
 
   2005: {
-    type: 'boots',
+    type: CLOTHES.BOOTS,
     img: '/images/items/boots/1/2.gif',
 
     info: {
       title: "Медвежья Лапа",
-      priceGold: 5,
-      maxDurability: 30,
+      [FINANCE_CURRENSIES.GOLD]: 5,
+      [CLOTHES_STATS.MAX_DURABILITY]: 30,
     },
 
     require: {
-      lvl: 1,
-      str: 1,
-      dex: 6,
-      suc: 1,
-      end: 4,
+      [BASE_INFO.LVL]: 1,
+      [STATS.STR]: 1,
+      [STATS.DEX]: 6,
+      [STATS.SUC]: 1,
+      [STATS.END]: 4,
     },
 
     props: {
-      hp: 3,
-      uvorot: 3,
-      a_uvorot: 1,
-      armor_legs: 3,
+      [MODIFICATORS.HP]: 3,
+      [MODIFICATORS.UVOROT]: 3,
+      [MODIFICATORS.A_UVOROT]: 1,
+      [MODIFICATORS.ARMOR_LEGS]: 3,
     },
   },
 }
