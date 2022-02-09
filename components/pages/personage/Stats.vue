@@ -24,7 +24,7 @@
       <div
         v-for="(stat, key, index) in filteredUserStats"
         :key="index"
-        class="flex align-center justify-between h-9"
+        class="flex items-center justify-between h-9"
       >
         <div class="item__text">
           {{ getNameByKey(key) }}
@@ -38,7 +38,7 @@
             </span>
           </div>
 
-          <div class="flex justify-center align-center">
+          <div class="flex justify-center items-center">
             <UIButton
               v-if="!disableIncreaseStatsButton"
               size="S"

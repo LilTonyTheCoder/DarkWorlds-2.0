@@ -1,7 +1,0 @@
-$whitespaces: normal, nowrap, pre, pre-line, pre-wrap;
-
-@each $whitespace in $whitespaces {
-  .whitespace-#{$whitespace} {
-    white-space: $whitespace;
-  }
-}

@@ -6,7 +6,7 @@
       <div
         v-for="item in enemiesListArray"
         :key="item.id"
-        class="flex w-100 h-16 mb-4 "
+        class="flex w-full h-16 mb-4 "
       >
         <img
           :src="item.info.img"
@@ -15,7 +15,7 @@
           @click="openItemInfo(item.prototype)"
         >
 
-        <div class="flex flex-grow flex-column">
+        <div class="flex flex-grow flex-col">
           <div class="h5 font-bold">
             {{ item.info[BASE_INFO.NAME] }} [{{ item.info[BASE_INFO.LVL] }}]
 
@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div class="flex align-center justify-center mr-1">
+        <div class="flex items-center justify-center mr-1">
           <UIButton
             icon-only
             variant="text"

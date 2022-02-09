@@ -4,7 +4,7 @@
       <div
         v-for="(param, index) in paramsToShow"
         :key="index"
-        :class="['flex align-center justify-between h-9', $style.paramRow, $style[`paramRow--${param}`]]"
+        :class="['flex items-center justify-between h-9', $style.paramRow, $style[`paramRow--${param}`]]"
       >
         <div> {{ getNameByKey(param) }} </div>
 

@@ -4,7 +4,7 @@
       :class="[
         $style.header,
         $style.borderBottom,
-        'py-3 pl-2 flex align-center h5 font-bold cursor-pointer relative noselect',
+        'py-3 pl-2 flex items-center h5 font-bold cursor-pointer relative noselect',
         { [$style.collapsed]: isCollapsed }
       ]"
       @click="handleClick"
@@ -15,7 +15,7 @@
         v-if="hasAnyInnerContent"
         :class="[
           $style.arrow,
-          'absolute flex align-center',
+          'absolute flex items-center',
           { [$style.rotated]: isCollapsed }
         ]"
       >

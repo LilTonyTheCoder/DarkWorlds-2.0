@@ -1,5 +1,5 @@
 <template>
-  <div class="px-5 flex flex-column">
+  <div class="px-5 flex flex-col">
     <div>
       <img :src="enemy.info.img" alt="">
     </div>

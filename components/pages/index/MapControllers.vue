@@ -14,7 +14,7 @@
           {{ item.title }}
         </UIButton>
       </div>
-      <div :class="['flex flex-wrap-reverse align-center justify-center p-3', $style.panel]">
+      <div :class="['flex flex-wrap-reverse items-center justify-center p-3', $style.panel]">
         <UIButton
           v-for="(route, index) in routesArray"
           :key="index"

@@ -2,11 +2,11 @@
   <teleport to="#popup-target">
     <div>
       <div
-        :class="[$style.shadow, 'absolute cursor-pointer w-100 h-100']"
+        :class="[$style.shadow, 'absolute cursor-pointer w-full h-full']"
         @click="handleClose"
       />
 
-      <div :class="[$style.dialog, 'absolute w-100 bg-white']">
+      <div :class="[$style.dialog, 'absolute w-full bg-white']">
         <div class="py-3 px-5 h4 font-bold relative">
           {{ title }}
 

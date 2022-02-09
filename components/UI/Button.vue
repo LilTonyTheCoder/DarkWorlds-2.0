@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'cursor-pointer flex align-center justify-center noselect',
+      'cursor-pointer flex items-center justify-center noselect',
       $style.button,
       { [$style.w100]: fullWidth},
       { [$style.disabled]: disabled},

@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <div class="flex align-center">
+    <div class="flex items-center">
       <UIButton
         icon-only
         variant="text"
