@@ -37,6 +37,9 @@
 
   Backlog:
     ☐ Переписать css в leftMenu
+    ☐ Убрать баг со скроллом по всей игре
+    ☐ Добавить анимацию попапа
+    ☐ Выделить (жирным что ли) активную кнопку верхнего меню
 
 Archive:
   ✔ https://tailwindcss.com/ занести ( https://tailwindcss.com/docs/guides/nuxtjs ) @done(22-02-10 01:36) @project(Common)
