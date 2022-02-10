@@ -12,7 +12,7 @@ export const leftSideItems: WearingInfo[] = [
   { title: CLOTHES.HELMET, styleClass: 'inventory__item--helmet' },
   { title: CLOTHES.WEAPON, styleClass: 'inventory__item--double' },
   { title: CLOTHES.ARMOR, styleClass: 'inventory__item--triple' },
-  { title: CLOTHES_MULTI.R_1, type: CLOTHES.RING, styleClass: 'inventory__item--ring inventory__item--ring--grow' },
+  { title: CLOTHES_MULTI.R_1, type: CLOTHES.RING, styleClass: 'inventory__item--ring' },
   { title: CLOTHES_MULTI.R_2, type: CLOTHES.RING, styleClass: 'inventory__item--ring' },
   { title: CLOTHES.BELT },
 ]
@@ -23,7 +23,7 @@ export const rightSideItems: WearingInfo[] = [
   { title: CLOTHES.GLOVES },
   { title: CLOTHES.SHIELD, styleClass: 'inventory__item--double' },
   { title: CLOTHES_MULTI.R_3, type: CLOTHES.RING, styleClass: 'inventory__item--ring' },
-  { title: CLOTHES_MULTI.R_4, type: CLOTHES.RING, styleClass: 'inventory__item--ring inventory__item--ring--grow' },
+  { title: CLOTHES_MULTI.R_4, type: CLOTHES.RING, styleClass: 'inventory__item--ring' },
   { title: CLOTHES.BOOTS, styleClass: 'inventory__item--boots' },
 ]
 export const stones: WearingInfo[] = [
