@@ -13,6 +13,16 @@
       <span>
         {{ headerState.title }}
       </span>
+
+      <div class="flex flex-col flex-grow items-end mr-2">
+        <span class="h6">
+          HP: {{ storeGetterUserCurrentHP }} / {{ storeGetterUserMaxHP }}
+        </span>
+
+        <span class="h6">
+          PW: {{ storeGetterUserCurrentPW }} / {{ storeGetterUserMaxPW }}
+        </span>
+      </div>
     </div>
 
     <div class="flex justify-around">
@@ -31,7 +41,13 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { storeActionToggleLeftMenu } from '~/composables/store'
+import {
+  storeActionToggleLeftMenu,
+  storeGetterUserMaxHP,
+  storeGetterUserCurrentHP,
+  storeGetterUserMaxPW,
+  storeGetterUserCurrentPW
+} from '~/composables/store'
 
 const bottomLinksArray: {
   title: string
