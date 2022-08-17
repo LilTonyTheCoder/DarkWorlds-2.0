@@ -1,8 +1,11 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 game pet project
 
-We recommend to look at the [documentation](https://v3.nuxtjs.org).
+## Stack
 
-Tailwind css [documentation](https://tailwindcss.com/docs/flex).
+- Nuxt 3 [documentation](https://v3.nuxtjs.org).
+- Tailwind css [documentation](https://tailwindcss.com/docs/flex).
+- TypeScript [documentation](https://www.typescriptlang.org/).
+- Project plans [todo](https://github.com/LilTonyTheCoder/DarkWorlds-2.0/blob/master/todo.todo).
 
 ## Setup
 
