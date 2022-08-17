@@ -9,7 +9,10 @@
 
 ## Setup
 
-Make sure to install the dependencies
+Make sure to install the dependencies.
+Worked on:
+node v16.14.0
+npm 8.3.1
 
 ```bash
 yarn install
