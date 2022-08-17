@@ -1,8 +1,11 @@
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   css: [
     '~/assets/css/index.scss'
+  ],
+  modules: [
+    '@pinia/nuxt',
   ],
   build: {
     postcss: {
