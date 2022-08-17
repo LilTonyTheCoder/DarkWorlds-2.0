@@ -42,12 +42,15 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import {
-  storeActionToggleLeftMenu,
   storeGetterUserMaxHP,
   storeGetterUserCurrentHP,
   storeGetterUserMaxPW,
   storeGetterUserCurrentPW
 } from '~/composables/store'
+
+import { useLeftMenuStore } from '~/stores/leftMenu';
+
+const leftMenuStore = useLeftMenuStore()
 
 const bottomLinksArray: {
   title: string
@@ -73,7 +76,7 @@ const isMainPageRoute = computed(() => route.fullPath === '/')
 
 const menuButtonHandler = (): void => {
   if (isMainPageRoute.value) {
-    storeActionToggleLeftMenu()
+    leftMenuStore.toggle()
   } else {
     router.push('/')
   }

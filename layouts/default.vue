@@ -7,7 +7,7 @@
         <slot />
       </div>
 
-      <SectionLeftMenu :is-open="isLeftMenuOpen" />
+      <SectionLeftMenu />
 
       <SectionChat />
 
@@ -30,8 +30,6 @@ useMeta({
     },
   ]
 })
-
-const isLeftMenuOpen = storeStateLeftMenu();
 </script>
 
 <style module lang="scss">

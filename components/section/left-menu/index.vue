@@ -1,9 +1,9 @@
 <template>
   <transition :duration="500" name="leftSlider">
-    <div v-if="isOpen" class="left-menu">
+    <div v-if="leftMenuStore.isOpen" class="left-menu">
       <div
         class="left-menu__shadow cursor-pointer"
-        @click="storeActionToggleLeftMenu"
+        @click="leftMenuStore.toggle"
       />
 
       <div class="left-menu__inner inner">
@@ -65,19 +65,13 @@
 </template>
 
 <script setup lang="ts">
-import { storeActionToggleLeftMenu } from '~/composables/store'
 import { useRouter } from 'vue-router'
 import { BASE_INFO } from '~/constants/creaturesParams'
+import { useLeftMenuStore } from '~/stores/leftMenu';
 
-interface Props {
-  isOpen: boolean
-}
-const props = withDefaults(defineProps<Props>(), {
-  isOpen: false,
-})
+const leftMenuStore = useLeftMenuStore()
 
 const userState = storeStateUserInfo()
-const isLeftMenuOpen = storeStateLeftMenu()
 const router = useRouter()
 
 type LinksArray = {
@@ -102,7 +96,7 @@ const middleLinks: LinksArray[] = [
 
 const itemHandler = (href: string): void => {
   router.push(href)
-  storeActionToggleLeftMenu()
+  leftMenuStore.toggle()
 }
 </script>
 

@@ -3,12 +3,6 @@ export {
 } from './store/header'
 
 export {
-  storeStateLeftMenu,
-
-  storeActionToggleLeftMenu
-} from './store/leftMenu'
-
-export {
   storeStateUserInfo,
 
   storeActionMapMove,
