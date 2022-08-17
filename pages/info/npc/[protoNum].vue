@@ -17,9 +17,9 @@
 
 <script lang="ts" setup>
 import { getEnemyByPrototype } from '~/backendInfo/npc'
-import { changeHeaderTitle } from '~/composables/headerCompo'
 import { BASE_INFO, STATS, MODIFICATORS } from '~/constants/creaturesParams'
 import { keyNameMatch, commonNameMatch } from '~/helpers/paramsNames'
+import { useHeaderStore } from '~/stores/header'
 
 const route = useRoute()
 
@@ -64,7 +64,8 @@ const infoToShow = computed<{ title: string, val: number }[]>(() => {
 useMeta({
   title: `${enemyName} | Информация`
 })
-changeHeaderTitle(enemyName)
+
+useHeaderStore().changeTitle(enemyName);
 </script>
 
 <style lang="scss">

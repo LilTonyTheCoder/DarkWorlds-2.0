@@ -11,7 +11,7 @@
       </UIButton>
 
       <span>
-        {{ headerState.title }}
+        {{ headerStore.title }}
       </span>
 
       <div class="flex flex-col flex-grow items-end mr-2">
@@ -49,6 +49,7 @@ import {
 } from '~/composables/store'
 
 import { useLeftMenuStore } from '~/stores/leftMenu';
+import { useHeaderStore } from '~/stores/header';
 
 const leftMenuStore = useLeftMenuStore()
 
@@ -71,7 +72,7 @@ const bottomLinksArray: {
 ]
 const route = useRoute()
 const router = useRouter()
-const headerState = storeStateHeader()
+const headerStore = useHeaderStore()
 const isMainPageRoute = computed(() => route.fullPath === '/')
 
 const menuButtonHandler = (): void => {

@@ -1,8 +1,4 @@
 export {
-  storeStateHeader
-} from './store/header'
-
-export {
   storeStateUserInfo,
 
   storeActionMapMove,

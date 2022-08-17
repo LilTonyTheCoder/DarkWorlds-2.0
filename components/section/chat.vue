@@ -5,13 +5,15 @@
     <div>19:24 <b>bender:</b> кстати, я офф</div>
 
     <div class="main-chat__release">
-      v {{ headerState.gameVersion }}
+      v {{ headerStore.gameVersion }}
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const headerState = storeStateHeader()
+import { useHeaderStore } from '~/stores/header'
+
+const headerStore = useHeaderStore()
 </script>
 
 <style lang="scss">

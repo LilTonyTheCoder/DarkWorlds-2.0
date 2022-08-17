@@ -67,7 +67,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { BASE_INFO } from '~/constants/creaturesParams'
-import { useLeftMenuStore } from '~/stores/leftMenu';
+import { useLeftMenuStore } from '~/stores/leftMenu'
 
 const leftMenuStore = useLeftMenuStore()
 

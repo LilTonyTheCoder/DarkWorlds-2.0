@@ -5,12 +5,13 @@
 </template>
 
 <script lang="ts" setup>
-import { resetHeaderTitle } from '~/composables/headerCompo'
+import { useHeaderStore } from '~/stores/header'
 
 useMeta({
   title: 'DW skills'
 })
-resetHeaderTitle()
+
+useHeaderStore().resetTitle()
 </script>
 
 <style lang="scss">

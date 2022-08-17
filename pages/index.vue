@@ -12,12 +12,13 @@
 
 <script lang="ts" setup>
 import { mapArray } from '~/backendInfo/map'
-import { changeHeaderTitle } from '~/composables/headerCompo'
+import { useHeaderStore } from '~/stores/header'
 
-const storeStateHeaderLocal = storeStateHeader()
+const headerStore = useHeaderStore()
 
 useMeta({
-  title: storeStateHeaderLocal.value.gameName
+  title: headerStore.gameName
 })
-changeHeaderTitle(storeStateHeaderLocal.value.gameName)
+
+headerStore.changeTitle(headerStore.gameName)
 </script>
