@@ -9,7 +9,7 @@
           icon-only
           size="S"
           :disabled="item.disabled"
-          @click="storeActionSetMapBlockSize(item.val)"
+          @click="mapStore.setOneBlockSize(item.val)"
         >
           {{ item.title }}
         </UIButton>
@@ -35,11 +35,12 @@
 <script setup lang="ts">
 import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
-import { storeActionMapMove, storeActionSetMapBlockSize } from '~/composables/store';
+import { storeActionMapMove } from '~/composables/store';
 import { POSITIONS } from '~/constants/creaturesParams'
 import { MapSizes, MapSizesTitles } from '~/constants/mapInfo'
+import { useMapStore } from '~/stores/map'
 
-const stateMapBlockSize = storeStateMapBlockSize()
+const mapStore = useMapStore()
 const userState = storeStateUserInfo()
 const userPosition = computed(() => userState.value.position)
 const possibleMoves = computed(() => {
@@ -56,7 +57,7 @@ const sizesButtons = computed<{
     return {
       title: MapSizesTitles[key],
       val: MapSizes[key],
-      disabled: stateMapBlockSize.value === MapSizes[key]
+      disabled: mapStore.oneBlockSize === MapSizes[key]
     }
   })
 })

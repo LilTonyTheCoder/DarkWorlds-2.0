@@ -4,8 +4,8 @@
       <div class="info__map-wrapper">
         <div
           :style="{
-            width: `${stateMapBlockSize * 0.7}px`,
-            height: `${stateMapBlockSize * 0.7}px`,
+            width: `${mapStore.oneBlockSize * 0.7}px`,
+            height: `${mapStore.oneBlockSize * 0.7}px`,
           }"
           class="block__current-position"
         />
@@ -13,24 +13,24 @@
         <div
           class="info__map-inner"
           :style="[
-            {height: `${(mapArray.length+1) * stateMapBlockSize}px`},
-            {marginTop: `${(userPosition[POSITIONS.Y] - mapArray.length/2) * -stateMapBlockSize - 10}px`},
-            {marginLeft: `${(userPosition[POSITIONS.X] - mapArray[0].length/2) * -stateMapBlockSize - stateMapBlockSize/2}px`}
+            {height: `${(mapArray.length+1) * mapStore.oneBlockSize}px`},
+            {marginTop: `${(userPosition[POSITIONS.Y] - mapArray.length/2) * -mapStore.oneBlockSize - 10}px`},
+            {marginLeft: `${(userPosition[POSITIONS.X] - mapArray[0].length/2) * -mapStore.oneBlockSize - mapStore.oneBlockSize/2}px`}
           ]"
         >
           <div
             v-for="(row, rowIndex) in mapArray"
             :key="`rowIndex ${rowIndex}`"
             class="info__row"
-            :style="`width: ${stateMapBlockSize * row.length}px`"
+            :style="`width: ${mapStore.oneBlockSize * row.length}px`"
           >
             <div
               v-for="(block, blockIndex) in row"
               :key="`blockIndex ${blockIndex}`"
               class="info__block block"
               :style="[
-                {width: `${stateMapBlockSize}px`},
-                {height: `${stateMapBlockSize}px`}
+                {width: `${mapStore.oneBlockSize}px`},
+                {height: `${mapStore.oneBlockSize}px`}
               ]"
             >
               <template v-if="block.area !== 'empty'">
@@ -84,8 +84,9 @@
 import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
 import { POSITIONS } from '~/constants/creaturesParams'
+import { useMapStore } from '~/stores/map'
 
-const stateMapBlockSize = storeStateMapBlockSize()
+const mapStore = useMapStore()
 
 const areaIconMatch = {
   ground: 'no-image',

@@ -16,8 +16,3 @@ export {
   storeGetterUserCurrentPW,
   storeGetterUserMaxPW
 } from './store/userGetters'
-
-export {
-  storeStateMapBlockSize,
-  storeActionSetMapBlockSize
-} from './store/map'
