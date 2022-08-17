@@ -6,6 +6,7 @@
 - Tailwind css [documentation](https://tailwindcss.com/docs/flex).
 - TypeScript [documentation](https://www.typescriptlang.org/).
 - Project plans [todo](https://github.com/LilTonyTheCoder/DarkWorlds-2.0/blob/master/todo.todo).
+- Pinia Store [documentation](https://pinia.vuejs.org/).
 
 ## Setup
 
