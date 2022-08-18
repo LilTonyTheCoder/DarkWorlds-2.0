@@ -1,5 +1,9 @@
 <template>
   <div class="main-chat">
+    <!-- Example of using i18n in <html> -->
+    <div>{{ $t('Hello world') }}</div>
+    <div> {{ helloWorldString }}</div>
+
     <div>19:22 <b>Чемпион:</b> привет мир</div>
     <div>19:22 <b>bender:</b> а я сгибаю мир</div>
     <div>19:24 <b>bender:</b> кстати, я офф</div>
@@ -11,6 +15,12 @@
 </template>
 
 <script lang="ts" setup>
+// Example of using i18n inside <script>
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
+const helloWorldString = computed(() => t('Hello world'))
+// Example ends
+
 import { useHeaderStore } from '~/stores/header'
 
 const headerStore = useHeaderStore()
