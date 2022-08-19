@@ -1,7 +1,7 @@
 <template>
   <div class="main-chat">
     <!-- Example of using i18n in <html> -->
-    <div>{{ $t('Hello world') }}</div>
+    <div>{{ t('Hello world') }}</div>
     <div> {{ helloWorldString }}</div>
 
     <div>19:22 <b>Чемпион:</b> привет мир</div>
@@ -17,8 +17,19 @@
 <script lang="ts" setup>
 // Example of using i18n inside <script>
 import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
+const { t } = useI18n({
+  messages: {
+    en: {
+      "Hello world": "Hello world chat.vue",
+    },
+    ru: {
+      "Hello world": "Примет мир chat.vue",
+    }
+  }
+});
+
 const helloWorldString = computed(() => t('Hello world'))
+// https://vue-i18n.intlify.dev/guide/advanced/composition.html#datetime-formatting
 // Example ends
 
 import { useHeaderStore } from '~/stores/header'
