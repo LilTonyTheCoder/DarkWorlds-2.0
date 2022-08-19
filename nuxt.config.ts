@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   ],
   modules: [
     '@pinia/nuxt',
-    'vite-plugin-vue-type-imports/nuxt'
+    'vite-plugin-vue-type-imports/nuxt' // https://github.com/vuejs/core/issues/4294#issuecomment-984033739
   ],
   build: {
     postcss: {
