@@ -33,6 +33,9 @@ export type UserStore = {
     gender: GENDERS
     availableAvatars: string[]
   },
+
+  currentHPSubstractor?: number
+  currentPWSubstractor?: number
 }
 
 export type EquipedTypes = BackEquipmentTypes | CLOTHES_MULTI
