@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UICollapse title="Параметры">
+    <UICollapse :title="$t('Parameters')">
       <div
         v-for="(param, index) in paramsToShow"
         :key="index"
@@ -23,9 +23,15 @@ import UserItemsMixin from '~/components/mixins/user-items'
 import { getNameByKey } from '~/helpers/paramsNames'
 import { KeyNameKeys } from '~/helpers/paramsNames'
 import { MODIFICATORS } from '~/constants/creaturesParams'
+import { useI18n } from 'vue-i18n';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 /** MIXINS */
 const { allWearedModificators } = UserItemsMixin()
+
+/** STORE */
+const { t: $t } = useI18n({ messages: { en, ru }});
 
 /** DATA */
 const paramsToShow: MODIFICATORS[] = [

@@ -40,9 +40,14 @@ import { MapSizes, MapSizesTitles } from '~/constants/mapInfo'
 import { useMapStore } from '~/stores/map'
 import { useUserInfoStore } from '~/stores/user';
 
+import { useI18n } from 'vue-i18n';
+import ru from './MapControllers.i18n.ru.json';
+import en from './MapControllers.i18n.en.json';
+
 /** STORE */
 const mapStore = useMapStore()
 const userInfoStore = useUserInfoStore()
+const { t: $t } = useI18n({ messages: { en, ru }});
 
 /** COMPUTED */
 const possibleMoves = computed(() => {
@@ -80,7 +85,7 @@ const handleMove = (direction) => {
   const canMove = routesArray.value.find(el => el.name === direction).canMove
 
   if (!canMove) {
-    console.warn('Нельзя идти в этом направлении.')
+    console.warn($t('You cannot go this way.')) // TODO: to chat
     return
   }
 

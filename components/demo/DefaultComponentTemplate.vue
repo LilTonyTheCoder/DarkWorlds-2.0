@@ -11,7 +11,7 @@
 
 /** PROPS */ // (also for emits)
 
-/** STORE */
+/** STORE */ // (also for: i18n, router)
 
 /** DATA */
 

@@ -4,14 +4,14 @@
       size="M"
       @click="undressAll"
     >
-      Снять все
+      {{ $t('Undress all') }}
     </UIButton>
 
     <div class="h-4" />
 
     <div>
-      <p class="h5">Уровень: {{ userInfoStore.common[BASE_INFO.LVL] }}</p>
-      <p class="h5">Опыт: {{ userInfoStore.common[BASE_INFO.EXP] }} ({{ userInfoStore.common[BASE_INFO.EXP_FOR_NEXT_LEVEL] }})</p>
+      <p class="h5">{{ $t('Level') }}: {{ userInfoStore.common[BASE_INFO.LVL] }}</p>
+      <p class="h5">{{ $t('Experience') }}: {{ userInfoStore.common[BASE_INFO.EXP] }} ({{ userInfoStore.common[BASE_INFO.EXP_FOR_NEXT_LEVEL] }})</p>
 
       <div class="h5">
         {{ getNameByKey(STATS.FREE) }}: {{ userInfoStore.stats[STATS.FREE] }}
@@ -20,7 +20,7 @@
 
     <div class="h-9" />
 
-    <UICollapse title="Характеристики">
+    <UICollapse :title="$t('Stats')">
       <div
         v-for="(stat, key, index) in filteredUserStats"
         :key="index"
@@ -62,6 +62,9 @@ import { ref, computed } from 'vue'
 import { EquipedTypes } from '~/typings/store'
 import { BASE_INFO, STATS } from '~/constants/creaturesParams'
 import { useUserInfoStore } from '~/stores/user';
+import { useI18n } from 'vue-i18n';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 type FilteredUserStats = Exclude<STATS, STATS.FREE>
 
@@ -70,6 +73,7 @@ const { allWearedModificators } = UserItemsMixin()
 
 /** STORE */
 const userInfoStore = useUserInfoStore()
+const { t: $t } = useI18n({ messages: { en, ru }});
 
 /** COMPUTED */
 const disableIncreaseStatsButton = computed(() => userInfoStore.stats[STATS.FREE] < 1)

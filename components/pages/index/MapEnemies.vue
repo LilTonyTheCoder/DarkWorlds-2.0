@@ -1,7 +1,7 @@
 <template>
   <div>
     <UICollapse
-      :title="`Монстры (${enemiesListArray.length}):`"
+      :title="`${$t('Monsters')} (${enemiesListArray.length}):`"
     >
       <div
         v-for="item in enemiesListArray"
@@ -26,11 +26,11 @@
           </div>
 
           <div class="h6">
-            HP: {{ item.info[MODIFICATORS.HP] }}
+            {{ $t('HP') }}: {{ item.info[MODIFICATORS.HP] }}
           </div>
 
           <div class="h6">
-            Урон: {{ item.modificators[MODIFICATORS.MIN_DAMAGE] }} - {{ item.modificators[MODIFICATORS.MAX_DAMAGE] }}
+            {{ $t('Damage') }}: {{ item.modificators[MODIFICATORS.MIN_DAMAGE] }} - {{ item.modificators[MODIFICATORS.MAX_DAMAGE] }}
           </div>
         </div>
 
@@ -51,11 +51,14 @@
 import { getEnemiesListByCoordinate } from '~/backendInfo/npc'
 import { BASE_INFO, MODIFICATORS } from '~/constants/creaturesParams'
 import { useUserInfoStore } from '~/stores/user';
-
+import { useI18n } from 'vue-i18n';
+import ru from './MapEnemies.i18n.ru.json';
+import en from './MapEnemies.i18n.en.json';
 
 /** STORE */
 const userInfoStore = useUserInfoStore()
 const router = useRouter();
+const { t: $t } = useI18n({ messages: { en, ru }});
 
 /** COMPUTED */
 const userPosition = computed(() => {

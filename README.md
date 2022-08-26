@@ -55,12 +55,20 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
 [Demo component](https://github.com/LilTonyTheCoder/DarkWorlds-2.0/blob/master/components/demo/DefaultComponentTemplate.vue)
 
 ### One .vue -> One .vue + several .ts
-If .vue component is larget than one screen you should split it to several files. All possible files:
+If .vue component is larget than one screen you should split it to several files.
+And better to put all of them into a one folder.
+All possible files:
 - MyComponent.vue
 - MyComponent.ts
 - MyComponent.types.ts
 - MyComponent.constants.ts
-- MyComponent.en.json
+- MyComponent.en.i18n.json
 
 ### Project folders/files structure
 text wip
+- components/block - wip
+- components/demo - unused demo examples
+- components/mixins - mixins
+- components/pages - wip
+- components/section - wip
+- components/UI - our UI library

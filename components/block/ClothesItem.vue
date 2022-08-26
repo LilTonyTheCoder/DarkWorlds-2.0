@@ -13,11 +13,11 @@
         {{ props.item.info.title }}
       </div>
       <div class="h6">
-        {{ t('Durability') }}: {{ props.item[CLOTHES_STATS.DURABILITY] }} / {{ props.item.info[CLOTHES_STATS.MAX_DURABILITY] }}
+        {{ $t('Durability') }}: {{ props.item[CLOTHES_STATS.DURABILITY] }} / {{ props.item.info[CLOTHES_STATS.MAX_DURABILITY] }}
       </div>
 
       <!-- Requirements -->
-      <div class="h6 font-bold mt-2">{{ t('Requirement') }}:</div>
+      <div class="h6 font-bold mt-2">{{ $t('Requirement') }}:</div>
       <div
         v-for="(reqProp, reqKey, reqIndex) in props.item.require"
         :key="`require ${reqIndex}`"
@@ -27,7 +27,7 @@
       </div>
 
       <!-- Properties -->
-      <div class="h6 font-bold mt-2">{{ t('Properties') }}:</div>
+      <div class="h6 font-bold mt-2">{{ $t('Properties') }}:</div>
       <div
         v-for="(propProp, propKey, propIndex) in props.item.props"
         :key="`property ${propIndex}`"
@@ -46,7 +46,7 @@
 
       <!-- Action description -->
       <template v-if="props.item.action">
-        <div class="h6 font-bold mt-2">{{ t('Actions') }}:</div>
+        <div class="h6 font-bold mt-2">{{ $t('Actions') }}:</div>
 
         <div class="h6">
           {{ getActionDescription(props.item.action) }}
@@ -70,11 +70,12 @@
 import { getNameByKey, getActionDescription } from '~/helpers/paramsNames'
 import { withDefaults, computed } from 'vue'
 import { CLOTHES_STATS } from '~/constants/clothesInfo'
-import { useI18n } from 'vue-i18n';
-import ru from './ClothesItem.ru.json';
-import en from './ClothesItem.en.json';
 import { PropsInterface, ButtonStrategy } from './ClothesItem.types';
 import { useUserInfoStore } from '~/stores/user';
+
+import { useI18n } from 'vue-i18n';
+import ru from './ClothesItem.i18n.ru.json';
+import en from './ClothesItem.i18n.en.json';
 
 /** PROPS */
 const props = withDefaults(defineProps<PropsInterface>(), {
@@ -86,29 +87,27 @@ const emit = defineEmits(['close'])
 
 /** STORE */
 const userInfoStore = useUserInfoStore()
-
-/** DATA */
-const { t } = useI18n({ messages: { en, ru }});
+const { t: $t } = useI18n({ messages: { en, ru }});
 
 /** COMPUTED */
 const buttonStrategy = computed<ButtonStrategy>(() => ({
   'throwItem': {
     'true': {
-      text: t('Throw'),
+      text: $t('Throw'),
       handler: throwItem
     },
     'false': {
-      text: t('Throw'),
+      text: $t('Throw'),
       handler: throwItem
     },
   },
   'default': {
     'true': {
-      text: t('Unequip'),
+      text: $t('Unequip'),
       handler: undressItem
     },
     'false': {
-      text: t('Equip'),
+      text: $t('Equip'),
       handler: dressItem
     }
   }
