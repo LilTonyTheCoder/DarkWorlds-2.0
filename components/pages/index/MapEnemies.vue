@@ -50,11 +50,13 @@
 <script lang="ts" setup>
 import { getEnemiesListByCoordinate } from '~/backendInfo/npc'
 import { BASE_INFO, MODIFICATORS } from '~/constants/creaturesParams'
+import { useUserInfoStore } from '~/stores/user';
+
 const router = useRouter();
 
-const stateUserInfo = storeStateUserInfo().value.position
+const userInfoStore = useUserInfoStore().position
 
-const enemiesListObj = computed(() => getEnemiesListByCoordinate(stateUserInfo))
+const enemiesListObj = computed(() => getEnemiesListByCoordinate(userInfoStore))
 const enemiesListArray = computed(() => {
   return Object.keys(enemiesListObj.value).map((id) => enemiesListObj.value[id])
 })

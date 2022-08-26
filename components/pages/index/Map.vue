@@ -85,6 +85,7 @@ import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
 import { POSITIONS } from '~/constants/creaturesParams'
 import { useMapStore } from '~/stores/map'
+import { useUserInfoStore } from '~/stores/user';
 
 const mapStore = useMapStore()
 
@@ -112,8 +113,8 @@ const areaIconMatch = {
   },
 }
 
-const userState = storeStateUserInfo();
-const userPosition = computed(() => userState.value.position)
+const userInfoStore = useUserInfoStore();
+const userPosition = computed(() => userInfoStore.position)
 </script>
 
 <style lang="scss">

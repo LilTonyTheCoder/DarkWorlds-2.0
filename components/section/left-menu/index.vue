@@ -10,18 +10,18 @@
         <div class="inner__row row row--info">
           <div class="row--info__avatar">
             <img
-              :src="userState.common[BASE_INFO.AVATAR]"
+              :src="userInfoStore.common[BASE_INFO.AVATAR]"
               alt=""
             >
           </div>
 
           <div class="row--info__text">
             <div class="row--info__name">
-              {{ userState.common[BASE_INFO.NAME] }}
+              {{ userInfoStore.common[BASE_INFO.NAME] }}
             </div>
 
             <div class="row--info__lvl">
-              {{ userState.common[BASE_INFO.CLASS] }} {{ userState.common[BASE_INFO.LVL] }} уровня
+              {{ userInfoStore.common[BASE_INFO.CLASS] }} {{ userInfoStore.common[BASE_INFO.LVL] }} уровня
             </div>
           </div>
         </div>
@@ -68,10 +68,11 @@
 import { useRouter } from 'vue-router'
 import { BASE_INFO } from '~/constants/creaturesParams'
 import { useLeftMenuStore } from '~/stores/leftMenu'
+import { useUserInfoStore } from '~/stores/user';
 
 const leftMenuStore = useLeftMenuStore()
 
-const userState = storeStateUserInfo()
+const userInfoStore = useUserInfoStore()
 const router = useRouter()
 
 type LinksArray = {

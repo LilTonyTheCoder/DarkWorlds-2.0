@@ -34,14 +34,14 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { storeActionPutOnAvatar } from '~/composables/store'
 import { BASE_INFO } from '~/constants/creaturesParams'
+import { useUserInfoStore } from '~/stores/user';
 
 const dialogVisible = ref(false);
 
-const userState = storeStateUserInfo()
-const userSettings = computed(() => userState.value.settings)
-const userCommon = computed(() => userState.value.common)
+const userInfoStore = useUserInfoStore()
+const userSettings = computed(() => userInfoStore.settings)
+const userCommon = computed(() => userInfoStore.common)
 
 const dialogInnerItems = computed<string[]>(() => {
   const avatarsUrls = userSettings.value.availableAvatars.map((el) => {
@@ -55,7 +55,7 @@ const toggleAvatarsPopup = (): void => {
 }
 
 const changeAvatar = (avatarUrl: string): void => {
-  storeActionPutOnAvatar(avatarUrl)
+  userInfoStore.storeActionPutOnAvatar(avatarUrl)
   dialogVisible.value = false
 }
 </script>

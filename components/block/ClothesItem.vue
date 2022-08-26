@@ -69,12 +69,12 @@
 <script setup lang="ts">
 import { getNameByKey, getActionDescription } from '~/helpers/paramsNames'
 import { withDefaults, computed } from 'vue'
-import { storeActionDressItem, storeActionUndressItem, storeActionThrowItemFromInventory } from '~/composables/store';
 import { CLOTHES_STATS } from '~/constants/clothesInfo'
 import { useI18n } from 'vue-i18n';
 import ru from './ClothesItem.ru.json';
 import en from './ClothesItem.en.json';
 import { PropsInterface, ButtonStrategy } from './ClothesItem.types';
+import { useUserInfoStore } from '~/stores/user';
 
 /** PROPS */
 const props = withDefaults(defineProps<PropsInterface>(), {
@@ -85,8 +85,7 @@ const props = withDefaults(defineProps<PropsInterface>(), {
 const emit = defineEmits(['close'])
 
 /** STORE */
-const userState = storeStateUserInfo()
-const userEquip = computed(() => userState.value.equipped)
+const userInfoStore = useUserInfoStore()
 
 /** DATA */
 const { t } = useI18n({ messages: { en, ru }});
@@ -117,17 +116,17 @@ const buttonStrategy = computed<ButtonStrategy>(() => ({
 
 /** ACTIONS */
 const undressItem = (): void => {
-  storeActionUndressItem(props.item.equippedIn)
+  userInfoStore.storeActionUndressItem(props.item.equippedIn)
   emit('close')
 }
 
 const dressItem = (): void => {
-  storeActionDressItem({ type: props.currentActiveTitle, id: props.item.id })
+  userInfoStore.storeActionDressItem({ type: props.currentActiveTitle, id: props.item.id })
   emit('close')
 }
 
 const throwItem = (): void => {
-  storeActionThrowItemFromInventory(props.item.id)
+  userInfoStore.storeActionThrowItemFromInventory(props.item.id)
 }
 </script>
 

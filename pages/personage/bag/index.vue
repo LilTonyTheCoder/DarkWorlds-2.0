@@ -38,6 +38,7 @@ import { ref, computed } from 'vue'
 import { ClientEquipmentItem } from '~/typings/equipments-items'
 import { FINANCE_CURRENSIES, FINANCE_NAMES } from '~/constants/userStore'
 import { useHeaderStore } from '~/stores/header'
+import { useUserInfoStore } from '~/stores/user';
 
 useMeta({
   title: 'DW bag'
@@ -47,10 +48,10 @@ useHeaderStore().resetTitle()
 
 const itemProt = ref(prototypes);
 
-const userState = storeStateUserInfo()
-const userInventory = computed(() => userState.value.inventory)
-const userCommon = computed(() => userState.value.common)
-const userEquipped = computed(() => userState.value.equipped)
+const userInfoStore = useUserInfoStore()
+const userInventory = computed(() => userInfoStore.inventory)
+const userCommon = computed(() => userInfoStore.common)
+const userEquipped = computed(() => userInfoStore.equipped)
 
 const allItemsArray = computed(() => {
   const arr: ClientEquipmentItem[] = []
@@ -74,7 +75,7 @@ const currensiesMap = computed<{
 }[]>(() => {
   return Object.keys(FINANCE_CURRENSIES).map(key => {
     return {
-      val: userState.value.finance[key],
+      val: userInfoStore.finance[key],
       title: FINANCE_NAMES[key]
     }
   })

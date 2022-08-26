@@ -3,11 +3,12 @@ import { keyNameMatch } from '~/helpers/paramsNames'
 import { computed } from 'vue'
 import { ClientEquipmentItem } from '~/typings/equipments-items'
 import { KeyNameKeys } from '~/helpers/paramsNames'
+import { useUserInfoStore } from '~/stores/user';
 
 export default function useRepositoryNameSearch() {
-  const userState = storeStateUserInfo()
-  const userInventory = computed(() => userState.value.inventory)
-  const userEquipped = computed(() => userState.value.equipped)
+  const userInfoStore = useUserInfoStore()
+  const userInventory = computed(() => userInfoStore.inventory)
+  const userEquipped = computed(() => userInfoStore.equipped)
   const paramsToCalc = computed(() => Object.keys(keyNameMatch))
 
   const allUserItemsExpanded = computed(() => {

@@ -48,11 +48,11 @@
 import UserItemsMixin from '~/components/mixins/user-items'
 import { armorNameMatch } from '~/helpers/paramsNames'
 import { ref, toRefs, computed, withDefaults } from "vue";
-import { storeActionUndressItem } from '~/composables/store';
 import { ClientEquipmentItem, BackEquipmentMultitypes } from '~/typings/equipments-items'
 import { getItemById } from '~/backendInfo/items'
 import { WearingInfo } from '~/helpers/personageWearingInfo'
 import { EquipedTypes } from '~/typings/store'
+import { useUserInfoStore } from '~/stores/user';
 
 interface Props {
   clothes: WearingInfo[]
@@ -78,8 +78,8 @@ const currentActive = ref<{
 const isMultiType = computed(() => currentActive.value.type !== currentActive.value.title)
 const typeToNameMatch = computed(() => armorNameMatch)
 
-const userState = storeStateUserInfo()
-const userEquip = computed(() => userState.value.equipped)
+const userInfoStore = useUserInfoStore()
+const userEquip = computed(() => userInfoStore.equipped)
 
 const closeDialog = (): void => {
   dialogVisible.value = false
@@ -97,7 +97,7 @@ const dressTextToMultiType = (itemId: string): string => {
 
 const handleRightClick = (title: EquipedTypes, evt: Event): void => {
   evt.preventDefault()
-  storeActionUndressItem(title)
+  userInfoStore.storeActionUndressItem(title)
 }
 
 const showItemsToWear = (title: EquipedTypes, type: EquipedTypes = title): void => {

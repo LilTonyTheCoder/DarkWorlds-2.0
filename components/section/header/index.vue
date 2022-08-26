@@ -16,11 +16,11 @@
 
       <div class="flex flex-col flex-grow items-end mr-2">
         <span class="h6">
-          HP: {{ storeGetterUserCurrentHP }} / {{ storeGetterUserMaxHP }}
+          HP: {{ userInfoStore.storeGetterUserCurrentHP }} / {{ userInfoStore.storeGetterUserMaxHP }}
         </span>
 
         <span class="h6">
-          PW: {{ storeGetterUserCurrentPW }} / {{ storeGetterUserMaxPW }}
+          PW: {{ userInfoStore.storeGetterUserCurrentPW }} / {{ userInfoStore.storeGetterUserMaxPW }}
         </span>
       </div>
     </div>
@@ -41,17 +41,13 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import {
-  storeGetterUserMaxHP,
-  storeGetterUserCurrentHP,
-  storeGetterUserMaxPW,
-  storeGetterUserCurrentPW
-} from '~/composables/store'
 
 import { useLeftMenuStore } from '~/stores/leftMenu';
 import { useHeaderStore } from '~/stores/header';
+import { useUserInfoStore } from '~/stores/user';
 
 const leftMenuStore = useLeftMenuStore()
+const userInfoStore = useUserInfoStore()
 
 const bottomLinksArray: {
   title: string

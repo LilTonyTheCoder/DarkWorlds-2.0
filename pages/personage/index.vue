@@ -43,6 +43,7 @@
 import { computed } from 'vue'
 import { leftSideItems, rightSideItems, stones, runesTop, runesBottom } from '~/helpers/personageWearingInfo'
 import { useHeaderStore } from '~/stores/header'
+import { useUserInfoStore } from '~/stores/user';
 
 useMeta({
   title: 'DW personage'
@@ -50,9 +51,9 @@ useMeta({
 
 useHeaderStore().resetTitle()
 
-const userState = storeStateUserInfo();
-const userCommon = computed(() => userState.value.common)
-const userSettings = computed(() => userState.value.settings)
+const userInfoStore = useUserInfoStore();
+const userCommon = computed(() => userInfoStore.common)
+const userSettings = computed(() => userInfoStore.settings)
 </script>
 
 <style lang="scss">

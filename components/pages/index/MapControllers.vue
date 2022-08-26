@@ -35,14 +35,14 @@
 <script setup lang="ts">
 import { mapArray } from '~/backendInfo/map'
 import { computed } from 'vue'
-import { storeActionMapMove } from '~/composables/store';
 import { POSITIONS } from '~/constants/creaturesParams'
 import { MapSizes, MapSizesTitles } from '~/constants/mapInfo'
 import { useMapStore } from '~/stores/map'
+import { useUserInfoStore } from '~/stores/user';
 
 const mapStore = useMapStore()
-const userState = storeStateUserInfo()
-const userPosition = computed(() => userState.value.position)
+const userInfoStore = useUserInfoStore()
+const userPosition = computed(() => userInfoStore.position)
 const possibleMoves = computed(() => {
   const currentAreaObj = mapArray[userPosition.value[POSITIONS.Y]][userPosition.value[POSITIONS.X]]
   return currentAreaObj.possibleMoves ? currentAreaObj.possibleMoves : ['t', 'l', 'r', 'b']
@@ -81,7 +81,7 @@ const handleMove = (direction) => {
     return
   }
 
-  storeActionMapMove(direction)
+  userInfoStore.storeActionMapMove(direction)
 }
 
 const listenKeyPress = (event: KeyboardEvent) => {

@@ -43,7 +43,7 @@
               v-if="!disableIncreaseStatsButton"
               size="S"
               icon-only
-              @click="storeActionIncreaseStat(key)"
+              @click="userInfoStore.storeActionIncreaseStat(key)"
             >
               +
             </UIButton>
@@ -59,18 +59,18 @@
 import { getNameByKey } from '~/helpers/paramsNames'
 import UserItemsMixin from '~/components/mixins/user-items'
 import { ref, computed } from 'vue'
-import { storeActionUndressItem, storeActionIncreaseStat } from '~/composables/store'
 import { EquipedTypes } from '~/typings/store'
 import { BASE_INFO, STATS } from '~/constants/creaturesParams'
+import { useUserInfoStore } from '~/stores/user';
 
 type FilteredUserStats = Exclude<STATS, STATS.FREE>
 
 const { allWearedModificators } = UserItemsMixin()
 
-const userState = storeStateUserInfo()
-const userStats = computed(() => userState.value.stats)
-const userCommon = computed(() => userState.value.common)
-const userEquipped = computed(() => userState.value.equipped)
+const userInfoStore = useUserInfoStore()
+const userStats = computed(() => userInfoStore.stats)
+const userCommon = computed(() => userInfoStore.common)
+const userEquipped = computed(() => userInfoStore.equipped)
 
 const disableIncreaseStatsButton = computed(() => userStats.value[STATS.FREE] < 1)
 
@@ -82,7 +82,7 @@ const filteredUserStats = computed<Record<FilteredUserStats, number>>(() => {
 
 const undressAll = (): void => {
   Object.keys(userEquipped.value).forEach((key: EquipedTypes): void => {
-    storeActionUndressItem(key)
+    userInfoStore.storeActionUndressItem(key)
   });
 }
 </script>
