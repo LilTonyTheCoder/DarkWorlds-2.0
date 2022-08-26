@@ -3,7 +3,7 @@
     :class="$style.wrapper"
   >
     <img
-      :src="userCommon[BASE_INFO.AVATAR]"
+      :src="userInfoStore.common[BASE_INFO.AVATAR]"
       alt="current user avatar"
       class="cursor-pointer"
       @click="toggleAvatarsPopup"
@@ -37,19 +37,21 @@ import { ref, computed } from 'vue'
 import { BASE_INFO } from '~/constants/creaturesParams'
 import { useUserInfoStore } from '~/stores/user';
 
+/** STORE */
+const userInfoStore = useUserInfoStore()
+
+/** DATA */
 const dialogVisible = ref(false);
 
-const userInfoStore = useUserInfoStore()
-const userSettings = computed(() => userInfoStore.settings)
-const userCommon = computed(() => userInfoStore.common)
-
+/** COMPUTED */
 const dialogInnerItems = computed<string[]>(() => {
-  const avatarsUrls = userSettings.value.availableAvatars.map((el) => {
-    return `/images/avatars/${userSettings.value.gender}${el}`
+  const avatarsUrls = userInfoStore.settings.availableAvatars.map((el) => {
+    return `/images/avatars/${userInfoStore.settings.gender}${el}`
   })
   return avatarsUrls
 })
 
+/** METHODS */
 const toggleAvatarsPopup = (): void => {
   dialogVisible.value = !dialogVisible.value
 }

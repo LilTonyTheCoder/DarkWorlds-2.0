@@ -114,7 +114,7 @@ const buttonStrategy = computed<ButtonStrategy>(() => ({
   }
 }));
 
-/** ACTIONS */
+/** METHODS */
 const undressItem = (): void => {
   userInfoStore.storeActionUndressItem(props.item.equippedIn)
   emit('close')

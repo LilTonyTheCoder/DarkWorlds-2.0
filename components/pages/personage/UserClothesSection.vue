@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-for="(item, index) in clothes"
+      v-for="(item, index) in props.clothes"
       :key="`clothes ${index}`"
       :class="[
         'inventory__item',
@@ -11,14 +11,14 @@
       @contextmenu="handleRightClick(item.title, $event)"
     >
       <img
-        v-if="!userEquip[item.title]"
+        v-if="!userInfoStore.equipped[item.title]"
         :src="`/images/items/default/char_${item.type || item.title}.gif`"
         :alt="item.type || item.title"
       >
 
       <img
-        v-if="userEquip[item.title]"
-        :src="getItemById(userEquip[item.title]).img"
+        v-if="userInfoStore.equipped[item.title]"
+        :src="getItemById(userInfoStore.equipped[item.title]).img"
         :alt="item.type || item.title"
       >
     </div>
@@ -57,13 +57,19 @@ import { useUserInfoStore } from '~/stores/user';
 interface Props {
   clothes: WearingInfo[]
 }
+
+/** MIXINS */
+const { allUserItemsExpanded } = UserItemsMixin()
+
+/** PROPS */
 const props = withDefaults(defineProps<Props>(), {
   clothes: null
 })
-const { clothes } = props
 
-const { allUserItemsExpanded } = UserItemsMixin()
+/** STORE */
+const userInfoStore = useUserInfoStore()
 
+/** DATA */
 const dialogVisible = ref(false);
 const dialogTitle = ref('title');
 const dialogInnerItems = ref<ClientEquipmentItem[]>([]);
@@ -75,20 +81,19 @@ const currentActive = ref<{
   title: null,
 });
 
+/** COMPUTED */
 const isMultiType = computed(() => currentActive.value.type !== currentActive.value.title)
 const typeToNameMatch = computed(() => armorNameMatch)
 
-const userInfoStore = useUserInfoStore()
-const userEquip = computed(() => userInfoStore.equipped)
-
+/** METHODS */
 const closeDialog = (): void => {
   dialogVisible.value = false
 }
 
 const dressTextToMultiType = (itemId: string): string => {
   let outputText = ''
-  Object.keys(userEquip.value).forEach((objKey) => {
-    if (userEquip.value[objKey] === itemId) {
+  Object.keys(userInfoStore.equipped).forEach((objKey) => {
+    if (userInfoStore.equipped[objKey] === itemId) {
       outputText = `( снимется со слота ${objKey} )`
     }
   })
@@ -109,14 +114,14 @@ const showItemsToWear = (title: EquipedTypes, type: EquipedTypes = title): void 
 
   // Hide current type which is already weared
   dialogInnerItems.value = dialogInnerItems.value.filter(el => {
-    const isElWear = Object.values(userEquip.value).includes(el.id)
-    const isElWearToCurrentTitle = userEquip.value[title] === el.id
+    const isElWear = Object.values(userInfoStore.equipped).includes(el.id)
+    const isElWearToCurrentTitle = userInfoStore.equipped[title] === el.id
     if (isElWear && !isElWearToCurrentTitle) return false
     return true
   })
 
   dialogInnerItems.value = dialogInnerItems.value.map((item) => {
-    const equippedIn = (userEquip.value[currentActive.value.title] === item.id) ? currentActive.value.title : null
+    const equippedIn = (userInfoStore.equipped[currentActive.value.title] === item.id) ? currentActive.value.title : null
     return {
       ...item,
       equippedIn,

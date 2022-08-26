@@ -6,15 +6,16 @@ import { KeyNameKeys } from '~/helpers/paramsNames'
 import { useUserInfoStore } from '~/stores/user';
 
 export default function useRepositoryNameSearch() {
+  /** STORE */
   const userInfoStore = useUserInfoStore()
-  const userInventory = computed(() => userInfoStore.inventory)
-  const userEquipped = computed(() => userInfoStore.equipped)
+
+  /** COMPUTED */
   const paramsToCalc = computed(() => Object.keys(keyNameMatch))
 
   const allUserItemsExpanded = computed(() => {
     const arr: ClientEquipmentItem[] = []
 
-    userInventory.value.forEach(id => {
+    userInfoStore.inventory.forEach(id => {
       arr.push(getItemById(id))
     })
 
@@ -23,8 +24,8 @@ export default function useRepositoryNameSearch() {
 
   const onlyWearUserItemsExpanded = computed(() => {
     return allUserItemsExpanded.value.filter((element) => {
-      return Object.keys(userEquipped.value).findIndex((el) => {
-        return userEquipped.value[el] === element.id
+      return Object.keys(userInfoStore.equipped).findIndex((el) => {
+        return userInfoStore.equipped[el] === element.id
       }) !== -1
     })
   })

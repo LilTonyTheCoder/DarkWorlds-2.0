@@ -40,27 +40,19 @@ import { FINANCE_CURRENSIES, FINANCE_NAMES } from '~/constants/userStore'
 import { useHeaderStore } from '~/stores/header'
 import { useUserInfoStore } from '~/stores/user';
 
-useMeta({
-  title: 'DW bag'
-})
-
-useHeaderStore().resetTitle()
-
-const itemProt = ref(prototypes);
-
+/** STORE */
+const headerStore = useHeaderStore()
 const userInfoStore = useUserInfoStore()
-const userInventory = computed(() => userInfoStore.inventory)
-const userCommon = computed(() => userInfoStore.common)
-const userEquipped = computed(() => userInfoStore.equipped)
 
+/** COMPUTED */
 const allItemsArray = computed(() => {
   const arr: ClientEquipmentItem[] = []
 
-  userInventory.value.forEach(id => {
+  userInfoStore.inventory.forEach(id => {
     // sort only non-equipped items
     let isEquippedCurrentItem = false
-    Object.keys(userEquipped.value).forEach((key) => {
-      if (userEquipped.value[key] === id) isEquippedCurrentItem = true
+    Object.keys(userInfoStore.equipped).forEach((key) => {
+      if (userInfoStore.equipped[key] === id) isEquippedCurrentItem = true
     })
     if (isEquippedCurrentItem) return
     // add item info from back
@@ -80,6 +72,15 @@ const currensiesMap = computed<{
     }
   })
 })
+
+/** HOOKS */
+headerStore.resetTitle()
+
+/** META */
+useMeta({
+  title: 'DW bag'
+})
+
 </script>
 
 <style lang="scss">

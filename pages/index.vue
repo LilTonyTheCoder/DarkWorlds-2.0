@@ -22,11 +22,15 @@
 import { mapArray } from '~/backendInfo/map'
 import { useHeaderStore } from '~/stores/header'
 
+/** STORE */
 const headerStore = useHeaderStore()
 
+/** HOOKS */
+headerStore.changeTitle(headerStore.gameName)
+
+/** META */
 useMeta({
   title: headerStore.gameName
 })
 
-headerStore.changeTitle(headerStore.gameName)
 </script>

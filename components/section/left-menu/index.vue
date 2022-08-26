@@ -70,17 +70,18 @@ import { BASE_INFO } from '~/constants/creaturesParams'
 import { useLeftMenuStore } from '~/stores/leftMenu'
 import { useUserInfoStore } from '~/stores/user';
 
-const leftMenuStore = useLeftMenuStore()
-
-const userInfoStore = useUserInfoStore()
-const router = useRouter()
-
 type LinksArray = {
     title: string
     icon: string
     href: string
 }
 
+/** STORE */
+const leftMenuStore = useLeftMenuStore()
+const userInfoStore = useUserInfoStore()
+const router = useRouter()
+
+/** DATA */
 const topLinks: LinksArray[] = [
   { title: 'Персонаж', icon: 'bi bi-person', href: '/personage' },
   { title: 'Умения', icon: 'bi bi-bookmark', href: '/personage/skills' },
@@ -95,6 +96,7 @@ const middleLinks: LinksArray[] = [
   { title: 'История сражений', icon: 'bi bi-clock-history', href: '#' },
 ]
 
+/** METHODS */
 const itemHandler = (href: string): void => {
   router.push(href)
   leftMenuStore.toggle()

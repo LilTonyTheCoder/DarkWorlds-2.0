@@ -14,8 +14,8 @@
           class="info__map-inner"
           :style="[
             {height: `${(mapArray.length+1) * mapStore.oneBlockSize}px`},
-            {marginTop: `${(userPosition[POSITIONS.Y] - mapArray.length/2) * -mapStore.oneBlockSize - 10}px`},
-            {marginLeft: `${(userPosition[POSITIONS.X] - mapArray[0].length/2) * -mapStore.oneBlockSize - mapStore.oneBlockSize/2}px`}
+            {marginTop: `${(userInfoStore.position[POSITIONS.Y] - mapArray.length/2) * -mapStore.oneBlockSize - 10}px`},
+            {marginLeft: `${(userInfoStore.position[POSITIONS.X] - mapArray[0].length/2) * -mapStore.oneBlockSize - mapStore.oneBlockSize/2}px`}
           ]"
         >
           <div
@@ -87,8 +87,11 @@ import { POSITIONS } from '~/constants/creaturesParams'
 import { useMapStore } from '~/stores/map'
 import { useUserInfoStore } from '~/stores/user';
 
+/** STORE */
 const mapStore = useMapStore()
+const userInfoStore = useUserInfoStore();
 
+/** DATA */
 const areaIconMatch = {
   ground: 'no-image',
   star: 'star',
@@ -113,8 +116,6 @@ const areaIconMatch = {
   },
 }
 
-const userInfoStore = useUserInfoStore();
-const userPosition = computed(() => userInfoStore.position)
 </script>
 
 <style lang="scss">

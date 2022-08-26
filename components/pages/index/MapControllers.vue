@@ -40,11 +40,13 @@ import { MapSizes, MapSizesTitles } from '~/constants/mapInfo'
 import { useMapStore } from '~/stores/map'
 import { useUserInfoStore } from '~/stores/user';
 
+/** STORE */
 const mapStore = useMapStore()
 const userInfoStore = useUserInfoStore()
-const userPosition = computed(() => userInfoStore.position)
+
+/** COMPUTED */
 const possibleMoves = computed(() => {
-  const currentAreaObj = mapArray[userPosition.value[POSITIONS.Y]][userPosition.value[POSITIONS.X]]
+  const currentAreaObj = mapArray[userInfoStore.position[POSITIONS.Y]][userInfoStore.position[POSITIONS.X]]
   return currentAreaObj.possibleMoves ? currentAreaObj.possibleMoves : ['t', 'l', 'r', 'b']
 })
 
@@ -73,6 +75,7 @@ const routesArray = computed(() => {
   return outputArray
 });
 
+/** METHODS */
 const handleMove = (direction) => {
   const canMove = routesArray.value.find(el => el.name === direction).canMove
 
@@ -91,6 +94,7 @@ const listenKeyPress = (event: KeyboardEvent) => {
   if (event.keyCode === 40 || event.keyCode === 83) handleMove('↓')
 }
 
+/** HOOKS */
 onMounted(() => {
   document.addEventListener("keyup", listenKeyPress)
 })

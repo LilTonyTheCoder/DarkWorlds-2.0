@@ -45,15 +45,22 @@ import { leftSideItems, rightSideItems, stones, runesTop, runesBottom } from '~/
 import { useHeaderStore } from '~/stores/header'
 import { useUserInfoStore } from '~/stores/user';
 
+/** STORE */
+const headerStore = useHeaderStore()
+const userInfoStore = useUserInfoStore();
+
+/** COMPUTED */
+const userCommon = computed(() => userInfoStore.common)
+const userSettings = computed(() => userInfoStore.settings)
+
+/** HOOKS */
+headerStore.resetTitle()
+
+/** META */
 useMeta({
   title: 'DW personage'
 })
 
-useHeaderStore().resetTitle()
-
-const userInfoStore = useUserInfoStore();
-const userCommon = computed(() => userInfoStore.common)
-const userSettings = computed(() => userInfoStore.settings)
 </script>
 
 <style lang="scss">

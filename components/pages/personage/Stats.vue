@@ -10,11 +10,11 @@
     <div class="h-4" />
 
     <div>
-      <p class="h5">Уровень: {{ userCommon[BASE_INFO.LVL] }}</p>
-      <p class="h5">Опыт: {{ userCommon[BASE_INFO.EXP] }} ({{ userCommon[BASE_INFO.EXP_FOR_NEXT_LEVEL] }})</p>
+      <p class="h5">Уровень: {{ userInfoStore.common[BASE_INFO.LVL] }}</p>
+      <p class="h5">Опыт: {{ userInfoStore.common[BASE_INFO.EXP] }} ({{ userInfoStore.common[BASE_INFO.EXP_FOR_NEXT_LEVEL] }})</p>
 
       <div class="h5">
-        {{ getNameByKey(STATS.FREE) }}: {{ userStats[STATS.FREE] }}
+        {{ getNameByKey(STATS.FREE) }}: {{ userInfoStore.stats[STATS.FREE] }}
       </div>
     </div>
 
@@ -65,23 +65,24 @@ import { useUserInfoStore } from '~/stores/user';
 
 type FilteredUserStats = Exclude<STATS, STATS.FREE>
 
+/** MIXINS */
 const { allWearedModificators } = UserItemsMixin()
 
+/** STORE */
 const userInfoStore = useUserInfoStore()
-const userStats = computed(() => userInfoStore.stats)
-const userCommon = computed(() => userInfoStore.common)
-const userEquipped = computed(() => userInfoStore.equipped)
 
-const disableIncreaseStatsButton = computed(() => userStats.value[STATS.FREE] < 1)
+/** COMPUTED */
+const disableIncreaseStatsButton = computed(() => userInfoStore.stats[STATS.FREE] < 1)
 
 const filteredUserStats = computed<Record<FilteredUserStats, number>>(() => {
-  let copyObj = JSON.parse(JSON.stringify(userStats.value))
+  let copyObj = JSON.parse(JSON.stringify(userInfoStore.stats))
   delete copyObj[STATS.FREE]
   return copyObj
 })
 
+/** METHODS */
 const undressAll = (): void => {
-  Object.keys(userEquipped.value).forEach((key: EquipedTypes): void => {
+  Object.keys(userInfoStore.equipped).forEach((key: EquipedTypes): void => {
     userInfoStore.storeActionUndressItem(key)
   });
 }

@@ -8,7 +8,7 @@
 
       <div :class="[$style.dialog, 'absolute w-full bg-white']">
         <div class="py-3 px-5 h4 font-bold relative">
-          {{ title }}
+          {{ props.title }}
 
           <div
             :class="['absolute cursor-pointer', $style.closeButton]"
@@ -30,13 +30,23 @@
 interface Props {
   title?: string
 }
+
+/** PROPS */
 const props = withDefaults(defineProps<Props>(), {
   title: null,
 })
-const { title } = props
 
 const emit = defineEmits(['close'])
 
+/** METHODS */
+const handleClose = (): void => {
+  emit('close')
+}
+const setKeyPressToClose = (event: KeyboardEvent) => {
+  if (event.keyCode === 27 || event.keyCode === 13) handleClose()
+}
+
+/** HOOKS */
 onMounted(() => {
   document.addEventListener("keyup", setKeyPressToClose)
 })
@@ -45,13 +55,6 @@ onBeforeUnmount(() => {
   document.removeEventListener("keyup", setKeyPressToClose)
 })
 
-const handleClose = (): void => {
-  emit('close')
-}
-
-const setKeyPressToClose = (event: KeyboardEvent) => {
-  if (event.keyCode === 27 || event.keyCode === 13) handleClose()
-}
 </script>
 
 <style lang="scss" module>

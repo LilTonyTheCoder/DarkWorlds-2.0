@@ -57,17 +57,22 @@ interface Props {
   title?: string
   innerText?: string
 }
+
+/** PROPS */
 const collapseProps = withDefaults(defineProps<Props>(), {
   title: 'title',
   innerText: null
 })
 
+/** DATA */
 const isCollapsed = ref(false)
 
+/** COMPUTED */
 const hasAnyInnerContent = computed(() => {
   return !!useSlots().default()[0].children.length || !!collapseProps.innerText
 })
 
+/** METHODS */
 const handleClick = () => {
   if (!hasAnyInnerContent.value) return
 

@@ -24,8 +24,10 @@ import { getNameByKey } from '~/helpers/paramsNames'
 import { KeyNameKeys } from '~/helpers/paramsNames'
 import { MODIFICATORS } from '~/constants/creaturesParams'
 
+/** MIXINS */
 const { allWearedModificators } = UserItemsMixin()
 
+/** DATA */
 const paramsToShow: MODIFICATORS[] = [
   MODIFICATORS.HP,
   MODIFICATORS.PW,

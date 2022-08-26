@@ -52,15 +52,21 @@ import { getEnemiesListByCoordinate } from '~/backendInfo/npc'
 import { BASE_INFO, MODIFICATORS } from '~/constants/creaturesParams'
 import { useUserInfoStore } from '~/stores/user';
 
+
+/** STORE */
+const userInfoStore = useUserInfoStore()
 const router = useRouter();
 
-const userInfoStore = useUserInfoStore().position
-
-const enemiesListObj = computed(() => getEnemiesListByCoordinate(userInfoStore))
+/** COMPUTED */
+const userPosition = computed(() => {
+  return useUserInfoStore().position
+})
+const enemiesListObj = computed(() => getEnemiesListByCoordinate(userPosition.value))
 const enemiesListArray = computed(() => {
   return Object.keys(enemiesListObj.value).map((id) => enemiesListObj.value[id])
 })
 
+/** METHODS */
 const openItemInfo = (itemProto: number): void => {
   router.push(`/info/npc/${itemProto}`)
 }

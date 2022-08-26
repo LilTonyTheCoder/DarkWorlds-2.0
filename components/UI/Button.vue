@@ -30,6 +30,8 @@ interface Props {
   size?: 'L' | 'M' | 'S'
   disabled?: boolean
 }
+
+/** PROPS */
 const props = withDefaults(defineProps<Props>(), {
   to: null,
   fullWidth: false,
@@ -38,11 +40,13 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'L',
   disabled: false
 })
-// const { to, fullWidth, variant, iconOnly, size, disabled } = props
 
-const router = useRouter();
 const emit = defineEmits(['click'])
 
+/** STORE */
+const router = useRouter();
+
+/** METHODS */
 const handleClick = () => {
   if (props.disabled) return;
 

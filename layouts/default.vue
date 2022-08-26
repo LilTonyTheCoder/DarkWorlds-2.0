@@ -17,6 +17,7 @@
 </template>
 
 <script setup lang="ts">
+/** META */
 useMeta({
   link: [
     {
@@ -30,6 +31,7 @@ useMeta({
     },
   ]
 })
+
 </script>
 
 <style module lang="scss">

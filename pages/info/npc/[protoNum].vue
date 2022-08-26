@@ -21,11 +21,11 @@ import { BASE_INFO, STATS, MODIFICATORS } from '~/constants/creaturesParams'
 import { keyNameMatch, commonNameMatch } from '~/helpers/paramsNames'
 import { useHeaderStore } from '~/stores/header'
 
+/** STORE */
 const route = useRoute()
+const headerStore = useHeaderStore()
 
-const enemy = getEnemyByPrototype(route.params.protoNum)
-const enemyName = enemy.info[BASE_INFO.NAME]
-
+/** DATA */
 const PARAMS_TO_SHOW: Record<string, number> = {
   [BASE_INFO.LVL]: 5,
   [MODIFICATORS.HP]: 14,
@@ -49,6 +49,10 @@ const PARAMS_TO_SHOW: Record<string, number> = {
   [STATS.INT]: 0,
 }
 
+/** COMPUTED */
+const enemy = getEnemyByPrototype(route.params.protoNum)
+const enemyName = enemy.info[BASE_INFO.NAME]
+
 const infoToShow = computed<{ title: string, val: number }[]>(() => {
   return Object.keys(PARAMS_TO_SHOW).map(key => {
     const title = keyNameMatch[key] || commonNameMatch[key] || ''
@@ -61,11 +65,14 @@ const infoToShow = computed<{ title: string, val: number }[]>(() => {
   })
 })
 
+/** HOOKS */
+headerStore.changeTitle(enemyName);
+
+/** META */
 useMeta({
   title: `${enemyName} | Информация`
 })
 
-useHeaderStore().changeTitle(enemyName);
 </script>
 
 <style lang="scss">

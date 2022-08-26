@@ -41,14 +41,18 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-
 import { useLeftMenuStore } from '~/stores/leftMenu';
 import { useHeaderStore } from '~/stores/header';
 import { useUserInfoStore } from '~/stores/user';
 
+/** STORE */
 const leftMenuStore = useLeftMenuStore()
 const userInfoStore = useUserInfoStore()
+const headerStore = useHeaderStore()
+const route = useRoute()
+const router = useRouter()
 
+/** DATA */
 const bottomLinksArray: {
   title: string
   link: string
@@ -66,11 +70,11 @@ const bottomLinksArray: {
     link: '/personage/bag'
   }
 ]
-const route = useRoute()
-const router = useRouter()
-const headerStore = useHeaderStore()
+
+/** COMPUTED */
 const isMainPageRoute = computed(() => route.fullPath === '/')
 
+/** METHODS */
 const menuButtonHandler = (): void => {
   if (isMainPageRoute.value) {
     leftMenuStore.toggle()
