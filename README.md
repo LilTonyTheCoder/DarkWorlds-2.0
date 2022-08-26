@@ -2,7 +2,7 @@
 
 # Basic Info
 
-## Stack
+## Tech stack
 
 - Nuxt 3 [documentation](https://v3.nuxtjs.org).
 - Tailwind css [documentation](https://tailwindcss.com/docs/flex).
@@ -49,10 +49,11 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
 - [fix] message
 - [text edits] message
 
-## Component creation rules
+## Components creation rules
 
-### Component sections order
-[Demo component](https://github.com/LilTonyTheCoder/DarkWorlds-2.0/blob/master/components/demo/DefaultComponentTemplate.vue)
+### Code components examples:
+- [Code: template component with right sections order](https://github.com/LilTonyTheCoder/DarkWorlds-2.0/blob/master/components/demo/DefaultComponentTemplate.vue)
+- [Code: multi language component](https://github.com/LilTonyTheCoder/DarkWorlds-2.0/blob/master/components/demo/MultiLanguageExample/index.vue)
 
 ### One .vue -> One .vue + several .ts
 If .vue component is larget than one screen you should split it to several files.
