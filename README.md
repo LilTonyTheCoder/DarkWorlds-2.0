@@ -38,3 +38,11 @@ yarn build
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
+
+## Possible commits names
+- [refactor] commit message
+- [feature] commit message
+- [fix] commit message
+- [text edits] commit message
+
+
