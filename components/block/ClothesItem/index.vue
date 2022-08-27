@@ -70,12 +70,12 @@
 import { getNameByKey, getActionDescription } from '~/helpers/paramsNames'
 import { withDefaults, computed } from 'vue'
 import { CLOTHES_STATS } from '~/constants/clothesInfo'
-import { PropsInterface, ButtonStrategy } from './ClothesItem.types';
+import { PropsInterface, ButtonStrategy } from './index.types';
 import { useUserInfoStore } from '~/stores/user';
 
 import { useI18n } from 'vue-i18n';
-import ru from './ClothesItem.i18n.ru.json';
-import en from './ClothesItem.i18n.en.json';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 /** PROPS */
 const props = withDefaults(defineProps<PropsInterface>(), {

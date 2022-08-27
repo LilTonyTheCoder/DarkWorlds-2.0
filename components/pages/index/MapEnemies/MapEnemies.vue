@@ -52,8 +52,8 @@ import { getEnemiesListByCoordinate } from '~/backendInfo/npc'
 import { BASE_INFO, MODIFICATORS } from '~/constants/creaturesParams'
 import { useUserInfoStore } from '~/stores/user';
 import { useI18n } from 'vue-i18n';
-import ru from './MapEnemies.i18n.ru.json';
-import en from './MapEnemies.i18n.en.json';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 /** STORE */
 const userInfoStore = useUserInfoStore()

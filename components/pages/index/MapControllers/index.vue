@@ -41,8 +41,8 @@ import { useMapStore } from '~/stores/map'
 import { useUserInfoStore } from '~/stores/user';
 
 import { useI18n } from 'vue-i18n';
-import ru from './MapControllers.i18n.ru.json';
-import en from './MapControllers.i18n.en.json';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 /** STORE */
 const mapStore = useMapStore()
