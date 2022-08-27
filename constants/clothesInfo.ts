@@ -1,5 +1,5 @@
 
-// TODO: Как то бы затащить это
+// TODO: Needs to be created
 // export enum CLOTHES_MULTI_WEAR {
 //   RING = 'ring',
 //   STONE = 'stone',

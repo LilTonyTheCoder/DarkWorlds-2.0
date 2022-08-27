@@ -16,11 +16,11 @@
 
       <div class="flex flex-col flex-grow items-end mr-2">
         <span class="h6">
-          HP: {{ userInfoStore.storeGetterUserCurrentHP }} / {{ userInfoStore.storeGetterUserMaxHP }}
+          {{ $t('HP') }}: {{ userInfoStore.storeGetterUserCurrentHP }} / {{ userInfoStore.storeGetterUserMaxHP }}
         </span>
 
         <span class="h6">
-          PW: {{ userInfoStore.storeGetterUserCurrentPW }} / {{ userInfoStore.storeGetterUserMaxPW }}
+          {{ $t('PW') }}: {{ userInfoStore.storeGetterUserCurrentPW }} / {{ userInfoStore.storeGetterUserMaxPW }}
         </span>
       </div>
     </div>
@@ -44,6 +44,9 @@ import { ref, computed } from 'vue'
 import { useLeftMenuStore } from '~/stores/leftMenu';
 import { useHeaderStore } from '~/stores/header';
 import { useUserInfoStore } from '~/stores/user';
+import { useI18n } from 'vue-i18n';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 /** STORE */
 const leftMenuStore = useLeftMenuStore()
@@ -51,27 +54,27 @@ const userInfoStore = useUserInfoStore()
 const headerStore = useHeaderStore()
 const route = useRoute()
 const router = useRouter()
+const { t: $t } = useI18n({ messages: { en, ru }});
 
-/** DATA */
-const bottomLinksArray: {
+/** COMPUTED */
+const bottomLinksArray = computed<{
   title: string
   link: string
-}[] = [
+}[]>(() => [ // TODO: move to routes.ts
   {
-    title: 'Персонаж',
+    title: $t('Personage'),
     link: '/personage'
   },
   {
-    title: 'Умения',
+    title: $t('Skills'),
     link: '/personage/skills'
   },
   {
-    title: 'Сумка',
+    title: $t('Bag'),
     link: '/personage/bag'
   }
-]
+])
 
-/** COMPUTED */
 const isMainPageRoute = computed(() => route.fullPath === '/')
 
 /** METHODS */

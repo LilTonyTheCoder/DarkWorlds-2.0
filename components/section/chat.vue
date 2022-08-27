@@ -1,8 +1,8 @@
 <template>
   <div class="main-chat">
-    <div>19:22 <b>Чемпион:</b> привет мир</div>
-    <div>19:22 <b>bender:</b> а я сгибаю мир</div>
-    <div>19:24 <b>bender:</b> кстати, я офф</div>
+    <div>19:22 <b>Champ:</b> hello world</div>
+    <div>19:22 <b>bender:</b> I bend the world</div>
+    <div>19:24 <b>bender:</b> oh, btw, Im afk</div>
 
     <div class="main-chat__release">
       v {{ headerStore.gameVersion }}

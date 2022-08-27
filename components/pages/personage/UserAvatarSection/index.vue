@@ -11,7 +11,7 @@
 
     <UIPopup
       v-if="dialogVisible"
-      title="Выбор образа"
+      :title="$t('Avatar choosing')"
       @close="toggleAvatarsPopup"
     >
       <div class="flex flex-wrap">
@@ -22,7 +22,7 @@
         >
           <img
             :src="item"
-            alt="выбрать аватар"
+            :alt="$t('choose avatar')"
             class="cursor-pointer"
             @click="changeAvatar(item)"
           >
@@ -36,9 +36,13 @@
 import { ref, computed } from 'vue'
 import { BASE_INFO } from '~/constants/creaturesParams'
 import { useUserInfoStore } from '~/stores/user';
+import { useI18n } from 'vue-i18n';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 /** STORE */
 const userInfoStore = useUserInfoStore()
+const { t: $t } = useI18n({ messages: { en, ru }});
 
 /** DATA */
 const dialogVisible = ref(false);

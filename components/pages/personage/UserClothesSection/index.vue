@@ -39,7 +39,9 @@
       <div
         v-if="!dialogInnerItems.length"
         class="mt-2"
-      >пусто...</div>
+      >
+        {{ $t('empty') }} ...
+      </div>
     </UIPopup>
   </div>
 </template>
@@ -53,6 +55,9 @@ import { getItemById } from '~/backendInfo/items'
 import { WearingInfo } from '~/helpers/personageWearingInfo'
 import { EquipedTypes } from '~/typings/store'
 import { useUserInfoStore } from '~/stores/user';
+import { useI18n } from 'vue-i18n';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 interface Props {
   clothes: WearingInfo[]
@@ -68,6 +73,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 /** STORE */
 const userInfoStore = useUserInfoStore()
+const { t: $t } = useI18n({ messages: { en, ru }});
 
 /** DATA */
 const dialogVisible = ref(false);
@@ -88,16 +94,6 @@ const typeToNameMatch = computed(() => armorNameMatch)
 /** METHODS */
 const closeDialog = (): void => {
   dialogVisible.value = false
-}
-
-const dressTextToMultiType = (itemId: string): string => {
-  let outputText = ''
-  Object.keys(userInfoStore.equipped).forEach((objKey) => {
-    if (userInfoStore.equipped[objKey] === itemId) {
-      outputText = `( снимется со слота ${objKey} )`
-    }
-  })
-  return outputText
 }
 
 const handleRightClick = (title: EquipedTypes, evt: Event): void => {

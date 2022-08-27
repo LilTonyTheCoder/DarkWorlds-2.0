@@ -21,7 +21,7 @@
             </div>
 
             <div class="row--info__lvl">
-              {{ userInfoStore.common[BASE_INFO.CLASS] }} {{ userInfoStore.common[BASE_INFO.LVL] }} уровня
+              {{ userInfoStore.common[BASE_INFO.CLASS] }} {{ userInfoStore.common[BASE_INFO.LVL] }} {{ $t('level' )}}
             </div>
           </div>
         </div>
@@ -69,6 +69,9 @@ import { useRouter } from 'vue-router'
 import { BASE_INFO } from '~/constants/creaturesParams'
 import { useLeftMenuStore } from '~/stores/leftMenu'
 import { useUserInfoStore } from '~/stores/user';
+import { useI18n } from 'vue-i18n';
+import ru from './index.i18n.ru.json';
+import en from './index.i18n.en.json';
 
 type LinksArray = {
     title: string
@@ -80,21 +83,22 @@ type LinksArray = {
 const leftMenuStore = useLeftMenuStore()
 const userInfoStore = useUserInfoStore()
 const router = useRouter()
+const { t: $t } = useI18n({ messages: { en, ru }});
 
-/** DATA */
-const topLinks: LinksArray[] = [
-  { title: 'Персонаж', icon: 'bi bi-person', href: '/personage' },
-  { title: 'Умения', icon: 'bi bi-bookmark', href: '/personage/skills' },
-  { title: 'Сумка', icon: 'bi bi-bag', href: '/personage/bag' },
-]
+/** COMPUTED */
+const topLinks = computed<LinksArray[]>(() => [
+  { title: $t('Personage'), icon: 'bi bi-person', href: '/personage' },
+  { title: $t('Skills'), icon: 'bi bi-bookmark', href: '/personage/skills' },
+  { title: $t('Bag'), icon: 'bi bi-bag', href: '/personage/bag' },
+])
 
-const middleLinks: LinksArray[] = [
-  { title: 'Локация', icon: 'bi bi-geo-alt', href: '/' },
-  { title: 'Задания', icon: 'bi bi-journal-text', href: '#' },
-  { title: 'Друзья', icon: 'bi bi-person-check', href: '#' },
-  { title: 'Обмен', icon: 'bi bi-arrow-down-up', href: '#' },
-  { title: 'История сражений', icon: 'bi bi-clock-history', href: '#' },
-]
+const middleLinks = computed<LinksArray[]>(() => [
+  { title: $t('Location'), icon: 'bi bi-geo-alt', href: '/' },
+  { title: $t('Quests'), icon: 'bi bi-journal-text', href: '#' },
+  { title: $t('Friends'), icon: 'bi bi-person-check', href: '#' },
+  { title: $t('Trade'), icon: 'bi bi-arrow-down-up', href: '#' },
+  { title: $t('Battles history'), icon: 'bi bi-clock-history', href: '#' },
+])
 
 /** METHODS */
 const itemHandler = (href: string): void => {
