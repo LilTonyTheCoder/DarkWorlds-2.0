@@ -7,7 +7,7 @@ module.exports = {
     './plugins/**/*.{js,ts}',
   ],
   variants: {
-    extend: {},
+    extend: {}
   },
   plugins: [],
   theme: {
