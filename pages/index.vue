@@ -1,36 +1,24 @@
 <template>
-  <div>
-    <div class="p-3 mb-2 bg-light text-dark relative">
-      <PagesIndexMap :map-array="mapArray" />
-
-      <PagesIndexMapControllers />
-
-      <PagesIndexMapEnemies />
-
-      <form>
-        <label for="locale-select">{{ $t('language') }}: </label>
-        <select id="locale-select" v-model="$i18n.locale">
-          <option value="en">en</option>
-          <option value="ru">ru</option>
-        </select>
-    </form>
-    </div>
-  </div>
+  <PagesModulesIndex />
 </template>
 
-<script lang="ts" setup>
-import { mapArray } from '~/backendInfo/map'
+<script lang="ts">
+import PagesModulesIndex from '~/components/pages-modules/index/index'
 import { useHeaderStore } from '~/stores/header'
 
-/** STORE */
-const headerStore = useHeaderStore()
+export default {
+  name: 'PageIndex',
 
-/** HOOKS */
-headerStore.changeTitle(headerStore.gameName)
+  components: {
+    PagesModulesIndex
+  },
 
-/** META */
-useMeta({
-  title: headerStore.gameName
-})
+  setup () {
+    const headerStore = useHeaderStore()
 
+    useHead({
+      title: headerStore.gameName
+    })
+  }
+}
 </script>

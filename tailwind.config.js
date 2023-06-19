@@ -4,7 +4,7 @@ module.exports = {
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
+    './plugins/**/*.{js,ts}'
   ],
   variants: {
     extend: {}
@@ -12,8 +12,8 @@ module.exports = {
   plugins: [],
   theme: {
     colors: {
-      'white': '#fff',
-      'red': 'red',
+      white: '#fff',
+      red: 'red'
     }
   }
-};
+}

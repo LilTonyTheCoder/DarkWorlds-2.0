@@ -1,12 +1,16 @@
-import { defineNuxtConfig } from 'nuxt'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'url'
+import { defineNuxtConfig } from 'nuxt'
 import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 export default defineNuxtConfig({
+  ssr: false,
+  typescript: {
+    typeCheck: true
+  },
   vite: {
     plugins: [
-      VueI18nVitePlugin({include: [resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')]})
+      VueI18nVitePlugin({ include: [resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')] })
     ]
   },
   css: [
@@ -18,7 +22,7 @@ export default defineNuxtConfig({
   ],
   build: {
     postcss: {
-      postcssOptions: require('./postcss.config.js'),
-    },
+      postcssOptions: require('./postcss.config.js')
+    }
   }
 })

@@ -23,6 +23,13 @@ Worked on:
 yarn install
 ```
 
+## Extentions for development
+- TypeScript Vue Plugin (Volar)
+- Vue Language Features (Volar)
+- Tailwind CSS IntelliSense
+- Prettier - Code formatter
+
+
 ## Development
 
 Start the development server on http://localhost:3000

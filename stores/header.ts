@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { BASE_INFO } from '~/constants/creaturesParams'
 import { HeaderStore } from '~/typings/store'
-import { useUserInfoStore } from '~/stores/user';
+import { useUserInfoStore } from '~/stores/user'
 
 export const useHeaderStore = defineStore('header', {
   state: (): HeaderStore => ({
@@ -11,14 +11,14 @@ export const useHeaderStore = defineStore('header', {
   }),
 
   actions: {
-    changeTitle(newTitle: string): void {
+    changeTitle (newTitle: string): void {
       this.title = newTitle
     },
 
-    resetTitle(): void {
+    resetTitle (): void {
       const storeStateUserInfoLocal = useUserInfoStore()
 
       this.title = `${storeStateUserInfoLocal.common.name} [${storeStateUserInfoLocal.common[BASE_INFO.LVL]}]`
-    },
-  },
+    }
+  }
 })
