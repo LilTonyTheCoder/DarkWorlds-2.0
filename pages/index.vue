@@ -3,8 +3,10 @@
 </template>
 
 <script lang="ts">
+import { mapActions } from 'pinia'
 import PagesModulesIndex from '~/components/pages-modules/index/index'
-import { useHeaderStore } from '~/stores/header'
+import { GAME_NAME } from '~/stores/header/index.constants'
+import { useMapStore } from '~/stores/map'
 
 export default {
   name: 'PageIndex',
@@ -13,12 +15,18 @@ export default {
     PagesModulesIndex
   },
 
-  setup () {
-    const headerStore = useHeaderStore()
+  head () {
+    return {
+      title: GAME_NAME
+    }
+  },
 
-    useHead({
-      title: headerStore.gameName
-    })
+  async mounted () {
+    await this.fetchMyMap()
+  },
+
+  methods: {
+    ...mapActions(useMapStore, ['fetchMyMap'])
   }
 }
 </script>

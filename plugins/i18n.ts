@@ -14,38 +14,38 @@ export const i18n = createI18n({
 })
 
 class StringGetter extends String {
-  msg = '';
+  msg = ''
 
-  constructor(msg) {
-    super(msg);
-    this.msg = msg;
+  constructor (msg) {
+    super(msg)
+    this.msg = msg
   }
 
-  getValue() {
-    const { t: $t } = i18n.global;
+  getValue () {
+    const { t: $t } = i18n.global
 
-    return $t(this.msg);
+    return $t(this.msg)
   }
 
-  valueOf() {
-    return this.getValue();
+  valueOf () {
+    return this.getValue()
   }
 
-  toString() {
-    return this.getValue();
+  toString () {
+    return this.getValue()
   }
 }
 
 export const i18nTranslator = (localesObjects) => {
-  const ru = localesObjects.ru || {};
-  const en = localesObjects.en || {};
+  const ru = localesObjects.ru || {}
+  const en = localesObjects.en || {}
 
-  i18n.global.mergeLocaleMessage('en', en);
-  i18n.global.mergeLocaleMessage('ru', ru);
+  i18n.global.mergeLocaleMessage('en', en)
+  i18n.global.mergeLocaleMessage('ru', ru)
 
   return {
-    $t(msg) {
-      return new StringGetter(msg);
+    $t (msg) {
+      return new StringGetter(msg)
     }
   }
 }

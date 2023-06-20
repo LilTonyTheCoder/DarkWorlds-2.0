@@ -80,42 +80,53 @@
   </div>
 </template>
 
-<script setup>
-import { mapArray } from '~/backendInfo/map'
-import { computed } from 'vue'
-import { POSITIONS } from '~/constants/creaturesParams'
+<script lang="ts">
+import { mapStores } from 'pinia'
 import { useMapStore } from '~/stores/map'
-import { useUserInfoStore } from '~/stores/user';
+import { useUserInfoStore } from '~/stores/user'
+import { POSITIONS } from '~/constants/creaturesParams'
 
-/** STORE */
-const mapStore = useMapStore()
-const userInfoStore = useUserInfoStore();
+export default {
+  name: 'PagesModulesIndexMap',
 
-/** DATA */
-const areaIconMatch = {
-  ground: 'no-image',
-  star: 'star',
-  shop: 'shop',
-  port: 'port',
-  library: 'library',
-  circle: 'circle',
-  'exclusive-shop': 'exclusive-shop',
-  sword: 'sword',
-  shield: 'shield',
-  cleaning: 'cleaning',
-  beer: 'beer',
-  key: 'key',
-  dollar: 'dollar',
-  hat: 'hat',
-  battle: 'battle',
-  clothes: 'clothes',
-  ring: 'ring',
+  data () {
+    return {
+      POSITIONS,
 
-  get(prop) {
-    return this[prop] ? this[prop] : 'in-progress'
+      areaIconMatch: {
+        ground: 'no-image',
+        star: 'star',
+        shop: 'shop',
+        port: 'port',
+        library: 'library',
+        circle: 'circle',
+        'exclusive-shop': 'exclusive-shop',
+        sword: 'sword',
+        shield: 'shield',
+        cleaning: 'cleaning',
+        beer: 'beer',
+        key: 'key',
+        dollar: 'dollar',
+        hat: 'hat',
+        battle: 'battle',
+        clothes: 'clothes',
+        ring: 'ring',
+
+        get (prop) {
+          return this[prop] ? this[prop] : 'in-progress'
+        }
+      }
+    }
   },
-}
 
+  computed: {
+    ...mapStores(useMapStore, useUserInfoStore),
+
+    mapArray () {
+      return this.mapStore.mapArray
+    }
+  }
+}
 </script>
 
 <style lang="scss">

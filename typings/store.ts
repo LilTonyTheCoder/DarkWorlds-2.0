@@ -3,12 +3,6 @@ import { FINANCE_CURRENSIES } from '~/constants/userStore'
 import { BASE_INFO, STATS, POSITIONS, GENDERS } from '~/constants/creaturesParams'
 import { CLOTHES_MULTI } from '~/constants/clothesInfo'
 
-export type HeaderStore = {
-  title: string
-  gameVersion: number
-  gameName: string
-}
-
 export type UserStore = {
   common: {
     [BASE_INFO.NAME]: string

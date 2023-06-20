@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import { UserStore } from '~/typings/store'
+import { MOVE_DIRECTIONS } from './index.constants'
+import { UserStore, EquipedTypes } from '~/typings/store'
 import { BASE_INFO, STATS, POSITIONS, GENDERS, MODIFICATORS } from '~/constants/creaturesParams'
 import { FINANCE_CURRENSIES } from '~/constants/userStore'
 import { CLOTHES, CLOTHES_MULTI } from '~/constants/clothesInfo'
-import { EquipedTypes } from '~/typings/store'
 import UserItemsMixin from '~/components/mixins/user-items'
 
-export const useUserInfoStore = defineStore('userInfoPinia', {
+export const useUserInfoStore = defineStore('userInfo', {
   state: (): UserStore => ({
     common: {
       [BASE_INFO.NAME]: 'Антоп',
@@ -14,13 +14,13 @@ export const useUserInfoStore = defineStore('userInfoPinia', {
       [BASE_INFO.CLASS]: 'Воин',
       [BASE_INFO.AVATAR]: '/images/avatars/male/common/0_0_M014.jpg',
       [BASE_INFO.EXP]: 27270,
-      [BASE_INFO.EXP_FOR_NEXT_LEVEL]: 31300,
+      [BASE_INFO.EXP_FOR_NEXT_LEVEL]: 31300
     },
 
     finance: {
       [FINANCE_CURRENSIES.GOLD]: 103,
       [FINANCE_CURRENSIES.PLATINUM]: 5,
-      [FINANCE_CURRENSIES.SILVER]: 4,
+      [FINANCE_CURRENSIES.SILVER]: 4
     },
 
     inventory: [
@@ -39,7 +39,7 @@ export const useUserInfoStore = defineStore('userInfoPinia', {
       '649aaf74f',
       '48e7afd73',
       '741ea426e',
-      'f553bdb9b',
+      'f553bdb9b'
     ],
 
     equipped: {
@@ -73,7 +73,7 @@ export const useUserInfoStore = defineStore('userInfoPinia', {
       [CLOTHES_MULTI.RUNE_3]: null,
       [CLOTHES_MULTI.RUNE_4]: null,
       [CLOTHES_MULTI.RUNE_5]: null,
-      [CLOTHES_MULTI.RUNE_6]: null,
+      [CLOTHES_MULTI.RUNE_6]: null
     },
 
     stats: {
@@ -82,12 +82,12 @@ export const useUserInfoStore = defineStore('userInfoPinia', {
       [STATS.SUC]: 2,
       [STATS.END]: 7,
       [STATS.INT]: 0,
-      [STATS.FREE]: 2,
+      [STATS.FREE]: 2
     },
 
     position: {
       [POSITIONS.X]: 5,
-      [POSITIONS.Y]: 5,
+      [POSITIONS.Y]: 5
     },
 
     settings: {
@@ -108,8 +108,8 @@ export const useUserInfoStore = defineStore('userInfoPinia', {
         '/common/0_0_M012.jpg',
         '/common/0_0_M013.jpg',
         '/common/0_0_M014.jpg',
-        '/common/0_0_M015.jpg',
-      ],
+        '/common/0_0_M015.jpg'
+      ]
     },
 
     currentHPSubstractor: 0,
@@ -128,7 +128,7 @@ export const useUserInfoStore = defineStore('userInfoPinia', {
     },
 
     storeGetterUserCurrentHP: (state): number => {
-      return useUserInfoStore().storeGetterUserMaxHP - state.currentHPSubstractor;
+      return useUserInfoStore().storeGetterUserMaxHP - state.currentHPSubstractor
     },
 
     storeGetterUserMaxPW: (state): number => {
@@ -146,48 +146,48 @@ export const useUserInfoStore = defineStore('userInfoPinia', {
   },
 
   actions: {
-    setOneBlockSize(newSize: number): void { // TEST
+    setOneBlockSize (newSize: number): void { // TEST
       this.oneBlockSize = newSize
     },
 
-    storeActionMapMove(payload: '↑' | '←' | '→' | '↓'): void {
+    storeActionMapMove (payload: MOVE_DIRECTIONS): void {
       switch (payload) {
-        case '↑':
+        case MOVE_DIRECTIONS.TOP:
           this.position[POSITIONS.Y] -= 1
           break
-        case '←':
+        case MOVE_DIRECTIONS.LEFT:
           this.position[POSITIONS.X] -= 1
           break
-        case '→':
+        case MOVE_DIRECTIONS.RIGHT:
           this.position[POSITIONS.X] += 1
           break
-        case '↓':
+        case MOVE_DIRECTIONS.BOTTOM:
           this.position[POSITIONS.Y] += 1
           break
       }
     },
 
-    storeActionDressItem(payload: { type: EquipedTypes, id: string }) {
+    storeActionDressItem (payload: { type: EquipedTypes, id: string }) {
       this.equipped[payload.type] = payload.id
     },
 
-    storeActionUndressItem(itemType: EquipedTypes) {
+    storeActionUndressItem (itemType: EquipedTypes) {
       this.equipped[itemType] = null
     },
 
-    storeActionThrowItemFromInventory(payload: string) {
+    storeActionThrowItemFromInventory (payload: string) {
       this.inventory = this.inventory.filter(el => el !== payload)
     },
 
-    storeActionPutOnAvatar(payload: string) {
+    storeActionPutOnAvatar (payload: string) {
       this.common.avatar = payload
     },
 
-    storeActionIncreaseStat(payload: STATS) {
-      if (this.stats[STATS.FREE] < 1) return
+    storeActionIncreaseStat (payload: STATS) {
+      if (this.stats[STATS.FREE] < 1) { return }
 
       this.stats[payload] += 1
       this.stats[STATS.FREE] -= 1
     }
-  },
+  }
 })
