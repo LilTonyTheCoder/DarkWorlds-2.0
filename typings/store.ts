@@ -1,6 +1,6 @@
 import { BackEquipmentTypes } from '~/typings/equipments-items'
 import { FINANCE_CURRENSIES } from '~/constants/userStore'
-import { BASE_INFO, STATS, POSITIONS, GENDERS } from '~/constants/creaturesParams'
+import { BASE_INFO, STATS, GENDERS } from '~/constants/creaturesParams'
 import { CLOTHES_MULTI } from '~/constants/clothesInfo'
 
 export type UserStore = {
@@ -20,8 +20,6 @@ export type UserStore = {
   equipped: Partial<Record<EquipedTypes, string | null>>
 
   stats: Record<STATS, number>
-
-  position: Record<POSITIONS, number>
 
   settings: {
     gender: GENDERS

@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="p-3 mb-2 bg-light text-dark relative">
-      <PagesIndexMap />
+      <PagesModulesIndexMap />
+
+      <PagesModulesIndexMapAreaInteraction />
 
       <PagesModulesIndexMapControllers />
 
@@ -27,6 +29,8 @@
 <script lang="ts">
 import { mapActions } from 'pinia'
 import PagesModulesIndexMapControllers from './map-controllers/index.vue'
+import PagesModulesIndexMap from './map/index.vue'
+import PagesModulesIndexMapAreaInteraction from './map-interaction/index.vue'
 import { GAME_NAME } from '~/stores/header/index.constants'
 import { useHeaderStore } from '~/stores/header'
 
@@ -34,7 +38,9 @@ export default {
   name: 'PagesModulesIndex',
 
   components: {
-    PagesModulesIndexMapControllers
+    PagesModulesIndexMapAreaInteraction,
+    PagesModulesIndexMapControllers,
+    PagesModulesIndexMap
   },
 
   data () {

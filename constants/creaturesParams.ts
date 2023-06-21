@@ -32,12 +32,6 @@ export enum BASE_INFO {
   NAME = 'name'
 }
 
-
-export enum POSITIONS {
-  X = 'x',
-  Y = 'y',
-}
-
 export enum GENDERS {
   MALE = 'male',
   FEMALE = 'female',

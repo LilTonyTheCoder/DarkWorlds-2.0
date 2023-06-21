@@ -23,10 +23,11 @@ export default {
 
   async mounted () {
     await this.fetchMyMap()
+    await this.fetchMapMove()
   },
 
   methods: {
-    ...mapActions(useMapStore, ['fetchMyMap'])
+    ...mapActions(useMapStore, ['fetchMyMap', 'fetchMapMove'])
   }
 }
 </script>

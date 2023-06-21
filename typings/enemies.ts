@@ -1,4 +1,5 @@
-import { BASE_INFO, STATS, MODIFICATORS, POSITIONS } from '~/constants/creaturesParams'
+import { BASE_INFO, STATS, MODIFICATORS } from '~/constants/creaturesParams'
+import { POSITIONS } from '~/stores/map/index.constants'
 
 export type BackEnemy = {
   info: {

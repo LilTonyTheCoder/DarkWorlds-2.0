@@ -1,8 +1,11 @@
 <template>
   <div class="main-chat">
-    <div>19:22 <b>Champ:</b> hello world</div>
-    <div>19:22 <b>bender:</b> I bend the world</div>
-    <div>19:24 <b>bender:</b> oh, btw, Im afk</div>
+    <div
+      v-for="line in chatStore.messages"
+      :key="line.text"
+    >
+      {{ line.time }} <b>{{ line.name }}:</b> {{ line.text }}
+    </div>
 
     <div class="main-chat__release">
       v {{ headerStore.gameVersion }}
@@ -10,11 +13,18 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts">
+import { mapStores } from 'pinia'
 import { useHeaderStore } from '~/stores/header'
+import { useChatStore } from '~/stores/chat'
 
-/** STORE */
-const headerStore = useHeaderStore()
+export default {
+  name: 'SectionChat',
+
+  computed: {
+    ...mapStores(useHeaderStore, useChatStore)
+  }
+}
 </script>
 
 <style lang="scss">

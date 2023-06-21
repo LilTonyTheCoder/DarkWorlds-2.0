@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
-import { MOVE_DIRECTIONS } from './index.constants'
 import { UserStore, EquipedTypes } from '~/typings/store'
-import { BASE_INFO, STATS, POSITIONS, GENDERS, MODIFICATORS } from '~/constants/creaturesParams'
+import { BASE_INFO, STATS, GENDERS, MODIFICATORS } from '~/constants/creaturesParams'
 import { FINANCE_CURRENSIES } from '~/constants/userStore'
 import { CLOTHES, CLOTHES_MULTI } from '~/constants/clothesInfo'
 import UserItemsMixin from '~/components/mixins/user-items'
@@ -85,11 +84,6 @@ export const useUserInfoStore = defineStore('userInfo', {
       [STATS.FREE]: 2
     },
 
-    position: {
-      [POSITIONS.X]: 5,
-      [POSITIONS.Y]: 5
-    },
-
     settings: {
       gender: GENDERS.MALE,
       availableAvatars: [
@@ -146,27 +140,6 @@ export const useUserInfoStore = defineStore('userInfo', {
   },
 
   actions: {
-    setOneBlockSize (newSize: number): void { // TEST
-      this.oneBlockSize = newSize
-    },
-
-    storeActionMapMove (payload: MOVE_DIRECTIONS): void {
-      switch (payload) {
-        case MOVE_DIRECTIONS.TOP:
-          this.position[POSITIONS.Y] -= 1
-          break
-        case MOVE_DIRECTIONS.LEFT:
-          this.position[POSITIONS.X] -= 1
-          break
-        case MOVE_DIRECTIONS.RIGHT:
-          this.position[POSITIONS.X] += 1
-          break
-        case MOVE_DIRECTIONS.BOTTOM:
-          this.position[POSITIONS.Y] += 1
-          break
-      }
-    },
-
     storeActionDressItem (payload: { type: EquipedTypes, id: string }) {
       this.equipped[payload.type] = payload.id
     },

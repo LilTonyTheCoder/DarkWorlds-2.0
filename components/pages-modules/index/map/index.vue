@@ -2,6 +2,7 @@
   <div class="main-page__wrapper">
     <div class="main-page__info info">
       <div class="info__map-wrapper">
+        <!-- User marker on the map -->
         <div
           :style="{
             width: `${mapStore.oneBlockSize * 0.7}px`,
@@ -10,16 +11,17 @@
           class="block__current-position"
         />
 
+        <!-- Map -->
         <div
           class="info__map-inner"
           :style="[
-            {height: `${(mapArray.length+1) * mapStore.oneBlockSize}px`},
-            {marginTop: `${(userInfoStore.position[POSITIONS.Y] - mapArray.length/2) * -mapStore.oneBlockSize - 10}px`},
-            {marginLeft: `${(userInfoStore.position[POSITIONS.X] - mapArray[0].length/2) * -mapStore.oneBlockSize - mapStore.oneBlockSize/2}px`}
+            {height: `${(mapStore.mapArray.length+1) * mapStore.oneBlockSize}px`},
+            {marginTop: `${(mapStore.position[POSITIONS.Y] - mapStore.mapArray.length/2) * -mapStore.oneBlockSize - 10}px`},
+            {marginLeft: `${(mapStore.position[POSITIONS.X] - mapStore.mapArray[0].length/2) * -mapStore.oneBlockSize - mapStore.oneBlockSize/2}px`}
           ]"
         >
           <div
-            v-for="(row, rowIndex) in mapArray"
+            v-for="(row, rowIndex) in mapStore.mapArray"
             :key="`rowIndex ${rowIndex}`"
             class="info__row"
             :style="`width: ${mapStore.oneBlockSize * row.length}px`"
@@ -39,13 +41,15 @@
                   class="block__border"
                 />
 
+                <!-- Area icon -->
                 <img
-                  v-if="areaIconMatch.get(block.area) !== 'no-image'"
-                  :src="`/images/map/${areaIconMatch.get(block.area)}.png`"
+                  v-if="MAP_AREA_TO_ICON[block.area] !== 'no-image'"
+                  :src="getAreaIcon(block.area)"
                   alt=""
                   class="block__icon"
                 >
 
+                <!-- Borders for the area -->
                 <template v-if="block.possibleMoves">
                   <div
                     v-if="block.possibleMoves.includes('b')"
@@ -65,6 +69,7 @@
                   />
                 </template>
 
+                <!-- If no need any borders for the area -->
                 <template v-else>
                   <div class="block__no-border block__no-border--b" />
                   <div class="block__no-border block__no-border--t" />
@@ -82,9 +87,9 @@
 
 <script lang="ts">
 import { mapStores } from 'pinia'
+import { MAP_AREA_TO_ICON, DEFAULT_AREA_ICON } from './index.constants'
 import { useMapStore } from '~/stores/map'
-import { useUserInfoStore } from '~/stores/user'
-import { POSITIONS } from '~/constants/creaturesParams'
+import { POSITIONS } from '~/stores/map/index.constants'
 
 export default {
   name: 'PagesModulesIndexMap',
@@ -92,38 +97,21 @@ export default {
   data () {
     return {
       POSITIONS,
-
-      areaIconMatch: {
-        ground: 'no-image',
-        star: 'star',
-        shop: 'shop',
-        port: 'port',
-        library: 'library',
-        circle: 'circle',
-        'exclusive-shop': 'exclusive-shop',
-        sword: 'sword',
-        shield: 'shield',
-        cleaning: 'cleaning',
-        beer: 'beer',
-        key: 'key',
-        dollar: 'dollar',
-        hat: 'hat',
-        battle: 'battle',
-        clothes: 'clothes',
-        ring: 'ring',
-
-        get (prop) {
-          return this[prop] ? this[prop] : 'in-progress'
-        }
-      }
+      MAP_AREA_TO_ICON
     }
   },
 
   computed: {
-    ...mapStores(useMapStore, useUserInfoStore),
+    ...mapStores(useMapStore),
 
     mapArray () {
       return this.mapStore.mapArray
+    }
+  },
+
+  methods: {
+    getAreaIcon (area) {
+      return MAP_AREA_TO_ICON[area] ? `/images/map/${MAP_AREA_TO_ICON[area]}.png` : `/images/map/${DEFAULT_AREA_ICON}.png`
     }
   }
 }

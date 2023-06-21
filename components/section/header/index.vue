@@ -6,8 +6,8 @@
         variant="text"
         @click="menuButtonHandler"
       >
-        <i v-if="isMainPageRoute" class="bi bi-list"></i>
-        <i v-else class="bi bi-arrow-left"></i>
+        <i v-if="isMainPageRoute" class="bi bi-list" />
+        <i v-else class="bi bi-arrow-left" />
       </UIButton>
 
       <span>
@@ -40,13 +40,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useLeftMenuStore } from '~/stores/leftMenu';
-import { useHeaderStore } from '~/stores/header';
-import { useUserInfoStore } from '~/stores/user';
-import { useI18n } from 'vue-i18n';
-import ru from './index.i18n.ru.json';
-import en from './index.i18n.en.json';
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import ru from './index.i18n.ru.json'
+import en from './index.i18n.en.json'
+import { useLeftMenuStore } from '~/stores/leftMenu'
+import { useHeaderStore } from '~/stores/header'
+import { useUserInfoStore } from '~/stores/user'
 
 /** STORE */
 const leftMenuStore = useLeftMenuStore()
@@ -54,7 +54,7 @@ const userInfoStore = useUserInfoStore()
 const headerStore = useHeaderStore()
 const route = useRoute()
 const router = useRouter()
-const { t: $t } = useI18n({ messages: { en, ru }});
+const { t: $t } = useI18n({ messages: { en, ru } })
 
 /** COMPUTED */
 const bottomLinksArray = computed<{

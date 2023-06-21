@@ -1,4 +1,4 @@
-import { MOVE_DIRECTIONS } from '~/stores/user/index.constants'
+import { MOVE_DIRECTIONS } from '~/stores/map/index.constants'
 
 export const MOVE_DIRECTIONS_SYMBOLS = {
   [MOVE_DIRECTIONS.TOP]: '↑',

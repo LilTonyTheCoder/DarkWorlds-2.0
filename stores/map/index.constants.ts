@@ -18,3 +18,15 @@ export const MAP_SIZES_NEW = {
     title: '1.5'
   }
 }
+
+export enum MOVE_DIRECTIONS {
+  TOP = 't',
+  LEFT = 'l',
+  RIGHT = 'r',
+  BOTTOM = 'b',
+}
+
+export enum POSITIONS {
+  X = 'x',
+  Y = 'y',
+}

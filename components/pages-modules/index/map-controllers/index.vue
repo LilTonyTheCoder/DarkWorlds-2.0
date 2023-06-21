@@ -40,12 +40,10 @@ import { mapStores } from 'pinia'
 import ru from './index.i18n.ru.json'
 import en from './index.i18n.en.json'
 import { MOVE_DIRECTIONS_SYMBOLS, ALL_POSSIBLE_DIRECTIONS } from './index.constants'
-import { POSITIONS } from '~/constants/creaturesParams'
 import { useMapStore } from '~/stores/map'
-import { useUserInfoStore } from '~/stores/user'
+import { useChatStore } from '~/stores/chat'
 import { i18nTranslator } from '~/plugins/i18n'
-import { MOVE_DIRECTIONS } from '~/stores/user/index.constants'
-import { MAP_SIZES_NEW } from '~/stores/map/index.constants'
+import { MAP_SIZES_NEW, POSITIONS, MOVE_DIRECTIONS } from '~/stores/map/index.constants'
 
 i18nTranslator({ en, ru })
 
@@ -60,11 +58,11 @@ export default {
   },
 
   computed: {
-    ...mapStores(useMapStore, useUserInfoStore),
+    ...mapStores(useMapStore, useChatStore),
 
     movesAvailability () {
-      const Y = this.userInfoStore.position[POSITIONS.Y]
-      const X = this.userInfoStore.position[POSITIONS.X]
+      const Y = this.mapStore.position[POSITIONS.Y]
+      const X = this.mapStore.position[POSITIONS.X]
 
       const currentAreaObj = (this.mapStore.mapArray[Y] && this.mapStore.mapArray[Y][X])
         ? this.mapStore.mapArray[Y][X].possibleMoves || ALL_POSSIBLE_DIRECTIONS // TODO: should be fixed. I think on the BE side
@@ -100,12 +98,17 @@ export default {
     handleMove (direction) {
       /** If the move is unavailable */
       if (!this.movesAvailability[direction]) {
-        console.warn(this.$t('You cannot go this way.')) // TODO: message to chat
+        this.chatStore.postMessageToChat({
+          name: 'Info',
+          time: new Date().toLocaleTimeString(),
+          text: this.$t('You cannot go this way.')
+        })
+
         return
       }
 
       /** Otherwise move */
-      this.userInfoStore.storeActionMapMove(direction)
+      this.mapStore.fetchMapMove(direction)
     },
 
     listenKeyPress (event: KeyboardEvent) {
