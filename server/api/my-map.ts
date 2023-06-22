@@ -1,4 +1,4 @@
-type PossibleAreas =
+export type PossibleAreas =
   'empty' |
   'shop' |
   'port' |
@@ -23,9 +23,12 @@ type PossibleMoves = 'r' | 'b' | 't' | 'l'
 export type MapSector = {
   area: PossibleAreas
   possibleMoves?: PossibleMoves[]
+  name?: string
+  description?: string
+  img?: string
 }
 
-const myMapArray: MapSector[][] = [
+export const myMapArray: MapSector[][] = [
   [
     { area: 'empty' }, { area: 'empty' }, { area: 'shop', possibleMoves: ['b'] }, { area: 'shop', possibleMoves: ['b'] }, { area: 'port', possibleMoves: ['r'] }, { area: 'ground', possibleMoves: ['l', 'r', 'b'] }, { area: 'port', possibleMoves: ['l'] }, { area: 'library', possibleMoves: ['b'] }, { area: 'library', possibleMoves: ['b'] }, { area: 'ground', possibleMoves: ['b'] }, { area: 'empty' }
   ], [
@@ -37,7 +40,7 @@ const myMapArray: MapSector[][] = [
   ], [
     { area: 'ground', possibleMoves: ['r'] }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'beer', possibleMoves: ['l', 'b'] }, { area: 'shop', possibleMoves: ['b'] }, { area: 'ground', possibleMoves: ['t', 'b'] }, { area: 'empty' }
   ], [
-    { area: 'empty' }, { area: 'ground', possibleMoves: ['t', 'b'] }, { area: 'shop', possibleMoves: ['t'] }, { area: 'ground', possibleMoves: ['t', 'r'] }, { area: 'ground' }, { area: 'star' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground', possibleMoves: ['l'] }
+    { area: 'empty' }, { area: 'ground', possibleMoves: ['t', 'b'] }, { area: 'shop', possibleMoves: ['t'] }, { area: 'ground', possibleMoves: ['t', 'r'] }, { area: 'ground' }, { area: 'star', name: 'Healing Star', description: 'Here you can refill your mana and health', img: 'healing-star.jpeg' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'ground', possibleMoves: ['l'] }
   ], [
     { area: 'empty' }, { area: 'ground', possibleMoves: ['t', 'r', 'b'] }, { area: 'ground', possibleMoves: ['l'] }, { area: 'key', possibleMoves: ['r'] }, { area: 'ground' }, { area: 'ground' }, { area: 'ground' }, { area: 'dollar', possibleMoves: ['t', 'l'] }, { area: 'hat', possibleMoves: ['t'] }, { area: 'ground', possibleMoves: ['t', 'b'] }, { area: 'empty' }
   ], [

@@ -101,7 +101,7 @@ export default {
         this.chatStore.postMessageToChat({
           name: 'Info',
           time: new Date().toLocaleTimeString(),
-          text: this.$t('You cannot go this way.')
+          text: this.$t('You cannot go this way.') // TODO: replace with a toaster
         })
 
         return

@@ -1,21 +1,13 @@
 import { defineStore } from 'pinia'
 import { POSSIBLE_MAP_SIZES, MAP_SIZES_NEW, MOVE_DIRECTIONS, POSITIONS } from './index.constants'
-import { MapSector } from '~/server/api/my-map'
-
-const $api = async (url, options?) => {
-  if (options) {
-    options.body = JSON.stringify(options?.body)
-  }
-
-  const response = await fetch(url, options)
-  const jsonData = await response.json()
-  return jsonData
-}
+import { MapSector, PossibleAreas } from '~/server/api/my-map'
+import { $api } from '~/helpers/api'
 
 export const useMapStore = defineStore('map', {
   state: () => ({
     mapArray: [[]] as MapSector[][],
     oneBlockSize: MAP_SIZES_NEW[POSSIBLE_MAP_SIZES.MEDIUM].val as number,
+    interactiveArea: null as PossibleAreas | null,
 
     position: {
       [POSITIONS.X]: 0,
@@ -39,7 +31,8 @@ export const useMapStore = defineStore('map', {
         body: payload
       })
 
-      this.position = data
+      this.position = data.coordinates
+      this.interactiveArea = data.interactiveArea
     }
   }
 })

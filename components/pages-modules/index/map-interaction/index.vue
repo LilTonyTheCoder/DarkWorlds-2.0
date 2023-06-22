@@ -1,11 +1,13 @@
 <template>
   <div
-    v-if="!AREAS_WITH_NO_INTERACTION[areaName]"
     :class="['absolute cursor-pointer', $style.wrapper]"
   >
-    <div>
+    <div
+      v-if="mapStore.interactiveArea"
+      @click="goInsideArea"
+    >
       <div :class="['flex flex-wrap-reverse items-center justify-center p-3', $style.panel]">
-        {{ areaName }}
+        {{ mapStore.interactiveArea }}
       </div>
     </div>
   </div>
@@ -13,16 +15,15 @@
 
 <script lang="ts">
 import { mapStores } from 'pinia'
-import { AREAS_WITH_NO_INTERACTION } from './index.constants'
 import { useMapStore } from '~/stores/map'
 import { POSITIONS } from '~/stores/map/index.constants'
+import { INSIDE_AREA_ROUTE } from '~/helpers/routes'
 
 export default {
   name: 'PagesModulesIndexMapAreaInteraction',
 
   data () {
     return {
-      AREAS_WITH_NO_INTERACTION,
       POSITIONS
     }
   },
@@ -30,11 +31,17 @@ export default {
   computed: {
     ...mapStores(useMapStore),
 
-    areaName () {
+    currentArea () { // TODO: get from BE
       const x = this.mapStore.position[POSITIONS.X]
       const y = this.mapStore.position[POSITIONS.Y]
 
-      return this.mapStore.mapArray[y][x]?.area
+      return this.mapStore.mapArray[y][x]
+    }
+  },
+
+  methods: {
+    goInsideArea () {
+      this.$router.push(`${INSIDE_AREA_ROUTE}/${this.currentArea.area}`)
     }
   }
 }
