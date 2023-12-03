@@ -48,6 +48,8 @@
 </template>
 
 <script lang="ts" setup>
+// TODO: move to option + BE
+
 import { useI18n } from 'vue-i18n'
 import ru from './index.i18n.ru.json'
 import en from './index.i18n.en.json'

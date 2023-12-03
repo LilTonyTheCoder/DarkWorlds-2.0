@@ -6,14 +6,9 @@ module.exports = {
     './pages/**/*.vue',
     './plugins/**/*.{js,ts}'
   ],
-  variants: {
+  theme: {
     extend: {}
   },
   plugins: [],
-  theme: {
-    colors: {
-      white: '#fff',
-      red: 'red'
-    }
-  }
+  safelist: []
 }

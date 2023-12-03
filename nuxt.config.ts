@@ -20,9 +20,10 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'vite-plugin-vue-type-imports/nuxt' // https://github.com/vuejs/core/issues/4294#issuecomment-984033739
   ],
-  build: {
-    postcss: {
-      postcssOptions: require('./postcss.config.js')
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {}
     }
   }
 })
